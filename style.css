@@ -1,0 +1,431 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #10b981;
+    --accent-color: #ef4444;
+    --text-color: #1f2937;
+    --background-color: #f3f4f6;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.reveal {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 22px;
+    color: var(--text-color);
+}
+
+.reveal .slides {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal .slides section {
+    padding: 40px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.reveal .slides section > * {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+    color: var(--text-color);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+.reveal h1 {
+    font-size: 3.2em;
+    background: linear-gradient(45deg, var(--primary-color), #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.8em;
+}
+
+.reveal h2 {
+    font-size: 2.4em;
+    color: var(--text-color);
+    text-align: left;
+    margin: 0 0 1.2em;
+    position: relative;
+    padding-bottom: 0.3em;
+}
+
+.reveal h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* タイトルスライド */
+.title-slide {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.title-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+    margin-top: 3em;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.feature {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2em;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature .icon {
+    font-size: 2.5em;
+    margin-bottom: 0.8em;
+    display: block;
+}
+
+/* 課題と解決策 */
+.problem-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.problems, .solutions {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5em;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow);
+}
+
+.problems h3, .solutions h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.8em;
+    font-size: 1.6em;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.problems ul, .solutions ul {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2em;
+}
+
+.problems li, .solutions li {
+    font-size: 1.3em;
+    line-height: 1.6;
+    padding-left: 2.5em;
+    position: relative;
+    color: var(--text-color);
+}
+
+.problems li::before,
+.solutions li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    transform: scale(1.2);
+}
+
+/* スケジュール */
+.schedule {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.time-block {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5em;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.time-block:hover {
+    transform: translateY(-5px);
+}
+
+.time-block h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* 期待される成果 */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.result-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2em;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.result-item:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 1200px) {
+    .reveal {
+        font-size: 20px;
+    }
+
+    .reveal .slides section {
+        padding: 30px;
+    }
+
+    .title-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 960px) {
+    .reveal {
+        font-size: 18px;
+    }
+    
+    .problem-solution,
+    .schedule,
+    .results-grid,
+    .preparation-list,
+    .support-system {
+        grid-template-columns: 1fr;
+        gap: 2em;
+    }
+    
+    .title-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature,
+    .problems,
+    .solutions,
+    .time-block,
+    .result-item {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .reveal .slides section {
+        padding: 20px;
+        height: auto;
+    }
+
+    .reveal h1 {
+        font-size: 2.5em;
+    }
+
+    .reveal h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .reveal {
+        font-size: 16px;
+    }
+
+    .reveal .slides section {
+        padding: 15px;
+    }
+
+    .problems,
+    .solutions,
+    .time-block,
+    .result-item {
+        padding: 1.5em;
+    }
+}
+
+.result-item .icon {
+    font-size: 2.5em;
+    margin-bottom: 0.8em;
+    display: block;
+}
+
+.result-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 0.8em;
+    color: var(--primary-color);
+}
+
+.result-item p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* 準備リスト */
+.preparation-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.prep-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.8em;
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.prep-item:hover {
+    transform: translateY(-5px);
+}
+
+.prep-item .icon {
+    font-size: 2em;
+    color: var(--primary-color);
+}
+
+.prep-item p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* サポート体制 */
+.support-system {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.support-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.2em;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.support-item:hover {
+    transform: translateY(-5px);
+}
+
+.support-item .icon {
+    font-size: 2.5em;
+    margin-bottom: 0.8em;
+    display: block;
+    color: var(--primary-color);
+}
+
+.support-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 0.8em;
+    color: var(--text-color);
+}
+
+/* 最終スライド */
+.end-slide {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.highlight {
+    font-size: 2em;
+    background: linear-gradient(45deg, var(--primary-color), #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 1.5em 0;
+    line-height: 1.4;
+    max-width: 800px;
+}
+
+.contact-info {
+    margin-top: 3em;
+    font-size: 1.4em;
+    padding: 2em;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+}
+
+/* 共通スタイル */
+.reveal ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.reveal li {
+    margin: 0.5em 0;
+    padding-left: 1.5em;
+    position: relative;
+}
+
+.reveal li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
