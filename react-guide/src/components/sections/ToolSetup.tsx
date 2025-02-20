@@ -1,0 +1,140 @@
+import { Card, CardContent, Grid, Typography, Box, IconButton, Collapse } from '@mui/material';
+import { motion } from 'framer-motion';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CodeIcon from '@mui/icons-material/Code';
+import TerminalIcon from '@mui/icons-material/Terminal';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useState } from 'react';
+
+const SetupCard = motion(Card);
+
+interface SetupStepProps {
+  title: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
+
+const SetupStep = ({ title, icon, children }: SetupStepProps) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <SetupCard
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      sx={{ height: '100%' }}
+    >
+      <CardContent>
+        <Box display="flex" alignItems="center" mb={2}>
+          {icon}
+          <Typography variant="h3" ml={2}>
+            {title}
+          </Typography>
+        </Box>
+        <Collapse in={expanded} collapsedSize={100}>
+          {children}
+        </Collapse>
+        <IconButton
+          onClick={() => setExpanded(!expanded)}
+          sx={{
+            transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s',
+          }}
+        >
+          <ExpandMoreIcon />
+        </IconButton>
+      </CardContent>
+    </SetupCard>
+  );
+};
+
+export const ToolSetup = () => {
+  return (
+    <Box component="section" mb={6}>
+      <Typography
+        variant="h2"
+        component={motion.h2}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        mb={4}
+      >
+        開発環境のセットアップ
+      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={4}>
+          <SetupStep
+            title="VS Codeのインストール"
+            icon={<CodeIcon sx={{ fontSize: 40, color: 'primary.main' }} />}
+          >
+            <Typography paragraph>
+              1. code.visualstudio.com にアクセス
+            </Typography>
+            <Typography paragraph>
+              2. お使いのOSに合わせてダウンロード
+            </Typography>
+            <Typography paragraph>
+              3. インストーラーを実行し、指示に従う
+            </Typography>
+            <Typography paragraph>
+              4. 日本語拡張機能をインストール（Japanese Language Pack）
+            </Typography>
+            <Typography variant="subtitle2" color="text.secondary">
+              ※ワークスペースの設定やキーボードショートカットのカスタマイズも可能です
+            </Typography>
+          </SetupStep>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <SetupStep
+            title="Git環境の準備"
+            icon={<TerminalIcon sx={{ fontSize: 40, color: 'primary.main' }} />}
+          >
+            <Typography paragraph>
+              1. git-scm.com からGitをダウンロード
+            </Typography>
+            <Typography paragraph>
+              2. インストーラーを実行
+            </Typography>
+            <Typography paragraph>
+              3. 基本設定を行う：
+            </Typography>
+            <Box component="ul" pl={2}>
+              <Typography component="li">ユーザー名の設定</Typography>
+              <Typography component="li">メールアドレスの設定</Typography>
+              <Typography component="li">エディタの設定</Typography>
+            </Box>
+            <Typography variant="subtitle2" color="text.secondary" mt={2}>
+              ※Gitの基本コマンドについては後述します
+            </Typography>
+          </SetupStep>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <SetupStep
+            title="GitHubアカウント"
+            icon={<AccountCircleIcon sx={{ fontSize: 40, color: 'primary.main' }} />}
+          >
+            <Typography paragraph>
+              1. github.com にアクセス
+            </Typography>
+            <Typography paragraph>
+              2. 「Sign up」からアカウント作成
+            </Typography>
+            <Typography paragraph>
+              3. 必要事項を入力：
+            </Typography>
+            <Box component="ul" pl={2}>
+              <Typography component="li">ユーザー名</Typography>
+              <Typography component="li">メールアドレス</Typography>
+              <Typography component="li">パスワード</Typography>
+            </Box>
+            <Typography paragraph mt={2}>
+              4. メール認証を完了
+            </Typography>
+            <Typography variant="subtitle2" color="text.secondary">
+              ※二要素認証の設定を推奨
+            </Typography>
+          </SetupStep>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};

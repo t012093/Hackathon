@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Projects 実践ガイド</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトルスライド -->
+      <section class="title-slide">
+        <h1>GitHub Projects<br>実践ガイド</h1>
+        <h2>効率的なプロジェクト管理のための<br>ベストプラクティス</h2>
+        <div class="title-features">
+          <div class="feature">
+            <span class="icon">🎯</span>
+            <h3>目的</h3>
+            <p>プロジェクト管理の効率化</p>
+          </div>
+          <div class="feature">
+            <span class="icon">📊</span>
+            <h3>手法</h3>
+            <p>GitHub Projects活用</p>
+          </div>
+          <div class="feature">
+            <span class="icon">🔄</span>
+            <h3>効果</h3>
+            <p>自動化と可視化の実現</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- プロジェクトボード基本設定 -->
+      <section>
+        <h2>プロジェクトボードの基本設定</h2>
+        <div class="setup-grid">
+          <div class="setup-item">
+            <span class="icon">🚀</span>
+            <h3>新規プロジェクト作成</h3>
+            <ul class="setup-details">
+              <li>Projectsタブを開く</li>
+              <li>「New Project」をクリック</li>
+              <li>Automated kanbanを選択</li>
+            </ul>
+          </div>
+          <div class="setup-item">
+            <span class="icon">📋</span>
+            <h3>基本カラムの設定</h3>
+            <ul class="setup-details">
+              <li>To do（未着手）</li>
+              <li>In Progress（作業中）</li>
+              <li>Review（レビュー中）</li>
+              <li>Done（完了）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Issue管理 -->
+      <section>
+        <h2>効率的なIssue管理</h2>
+        <div class="management-grid">
+          <div class="management-item">
+            <span class="icon">📝</span>
+            <h3>Issueテンプレート</h3>
+            <div class="code-block">
+              <pre><code class="language-markdown"># Issue Template
+## 概要
+[機能/バグの説明]
+
+## 目的
+- [ ] 目標1
+- [ ] 目標2
+
+## 受け入れ基準
+- [ ] 要件1
+- [ ] 要件2</code></pre>
+            </div>
+          </div>
+          <div class="management-item">
+            <span class="icon">🏷️</span>
+            <h3>ラベル管理</h3>
+            <ul class="label-list">
+              <li>🔴 high: 緊急対応</li>
+              <li>🟡 medium: 標準優先度</li>
+              <li>🟢 low: 余裕のあるタスク</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 自動化設定 -->
+      <section>
+        <h2>自動化の活用</h2>
+        <div class="automation-content">
+          <div class="automation-rules">
+            <h3>📍 自動化ルール例</h3>
+            <pre><code class="language-yaml"># 自動化設定例
+name: Project Board Automation
+
+on:
+  issues:
+    types: [opened, closed]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  automate_projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Move to column
+        uses: alex-page/github-project-automation-plus@v0.8.3
+        with:
+          project: "Project Name"
+          column: ${{ github.event_name == 'opened' ? 'To do' : 'Done' }}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- チーム協業 -->
+      <section>
+        <h2>チーム協業のベストプラクティス</h2>
+        <div class="collaboration-grid">
+          <div class="collab-item">
+            <span class="icon">📅</span>
+            <h3>デイリーアップデート</h3>
+            <ul class="collab-details">
+              <li>進捗報告の標準化</li>
+              <li>ブロッカーの早期発見</li>
+              <li>チーム間の情報共有</li>
+            </ul>
+          </div>
+          <div class="collab-item">
+            <span class="icon">📊</span>
+            <h3>週次レビュー</h3>
+            <ul class="collab-details">
+              <li>完了タスクの確認</li>
+              <li>KPIの測定と共有</li>
+              <li>次週の優先順位付け</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section class="end-slide">
+        <h2>プロジェクト成功のためのTips</h2>
+        <div class="tips-grid">
+          <div class="tip-item">
+            <span class="icon">👀</span>
+            <h3>可視化の重要性</h3>
+            <p>プロジェクトの状態を常に最新に保つ</p>
+          </div>
+          <div class="tip-item">
+            <span class="icon">🗣️</span>
+            <h3>コミュニケーション</h3>
+            <p>活発なディスカッションと情報共有</p>
+          </div>
+          <div class="tip-item">
+            <span class="icon">📈</span>
+            <h3>継続的な改善</h3>
+            <p>定期的なプロセスの見直しと最適化</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      center: true,
+      progress: true,
+      controls: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0.1,
+      minScale: 0.2,
+      maxScale: 2.0,
+      display: 'flex',
+      overview: true,
+      viewDistance: 2,
+      autoPlayMedia: false,
+      keyboard: true,
+      touch: true
+    });
+  </script>
+</body>
+</html>

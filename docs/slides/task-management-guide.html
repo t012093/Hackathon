@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク管理ガイド</title>
+    <link rel="stylesheet" href="slides.css">
+    <style>
+        .slide {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 900px;
+        }
+        .task-board {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        .task-column {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .task-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .command-box {
+            background: #282a36;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            font-family: monospace;
+            margin: 20px 0;
+        }
+        .emoji-icon {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .step-list {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .step-item {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .step-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <h1>タスク管理ガイド</h1>
+        <p>〜はじめての方向け〜</p>
+        <div class="emoji-icon">📋</div>
+    </div>
+
+    <div class="slide">
+        <h2>タスク管理とは？</h2>
+        <div class="task-board">
+            <div class="task-column">
+                <h3>やることリスト</h3>
+                <div class="task-item">✍️ アイデアを書き出す</div>
+                <div class="task-item">📅 スケジュールを立てる</div>
+                <div class="task-item">👥 チームで共有する</div>
+            </div>
+            <div class="task-column">
+                <h3>進行中</h3>
+                <div class="task-item">🔄 進捗を更新する</div>
+                <div class="task-item">📊 状況を確認する</div>
+            </div>
+            <div class="task-column">
+                <h3>完了</h3>
+                <div class="task-item">✅ 成果を確認する</div>
+                <div class="task-item">📝 振り返りをする</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>GitHub Projectsの使い方</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🎯 タスクの追加</h3>
+                <p>【+】ボタンから簡単に追加</p>
+            </div>
+            <div class="feature-card">
+                <h3>👥 担当者の設定</h3>
+                <p>誰が何をするか明確に</p>
+            </div>
+            <div class="feature-card">
+                <h3>📅 期限の設定</h3>
+                <p>いつまでにやるか決める</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏷️ ラベル付け</h3>
+                <p>種類や重要度を分類</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>コマンドでタスクを追加</h2>
+        <div class="command-box">
+            # 基本的なタスク追加<br>
+            cline task "タスクのタイトル"<br><br>
+            # 詳細情報付きのタスク追加<br>
+            cline task "週次MTGの資料作成" --due "2024-02-28" --label "会議"
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>効果的なタスクの書き方</h2>
+        <div class="step-list">
+            <div class="step-item">具体的に書く</div>
+            <div class="step-item">期限を明確にする</div>
+            <div class="step-item">担当者を決める</div>
+            <div class="step-item">優先度を付ける</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>便利な機能</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🔍 フィルター</h3>
+                <p>必要なタスクだけを表示</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 ソート</h3>
+                <p>期限順に並び替え</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 モバイル</h3>
+                <p>スマホでも確認可能</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔔 通知</h3>
+                <p>更新を自動で受け取る</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>1. 開発環境のセットアップ</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📥 VS Codeのインストール</h3>
+                <ol>
+                    <li>code.visualstudio.com にアクセス</li>
+                    <li>お使いのOSに合わせてダウンロード</li>
+                    <li>インストーラーを実行</li>
+                    <li>日本語拡張機能をインストール（オプション）</li>
+                </ol>
+            </div>
+            <div class="feature-card">
+                <h3>🔧 Git環境の準備</h3>
+                <ol>
+                    <li>git-scm.com からGitをダウンロード</li>
+                    <li>インストーラーを実行</li>
+                    <li>基本設定を完了</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>2. GitHubアカウントの設定</h2>
+        <div class="task-board">
+            <div class="task-column">
+                <h3>アカウント作成</h3>
+                <div class="task-item">1. github.com にアクセス</div>
+                <div class="task-item">2. 「Sign up」をクリック</div>
+                <div class="task-item">3. メールアドレスを入力</div>
+                <div class="task-item">4. パスワードを設定</div>
+            </div>
+            <div class="task-column">
+                <h3>基本設定</h3>
+                <div class="task-item">1. ユーザー名の設定</div>
+                <div class="task-item">2. プロフィールの作成</div>
+                <div class="task-item">3. メール認証の完了</div>
+            </div>
+            <div class="task-column">
+                <h3>セキュリティ設定</h3>
+                <div class="task-item">1. 二要素認証の設定</div>
+                <div class="task-item">2. SSHキーの設定（必要な場合）</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>3. Cline拡張機能のセットアップ</h2>
+        <div class="step-list">
+            <div class="step-item">
+                <h3>VS Code拡張機能のインストール</h3>
+                <ol>
+                    <li>VS Codeを起動</li>
+                    <li>左サイドバーの拡張機能アイコンをクリック</li>
+                    <li>検索バーに「Cline」と入力</li>
+                    <li>「Install」をクリック</li>
+                </ol>
+            </div>
+            <div class="step-item">
+                <h3>Cline基本設定</h3>
+                <ol>
+                    <li>コマンドパレットを開く（Ctrl+Shift+P）</li>
+                    <li>「Cline: Initialize」を実行</li>
+                    <li>VS Codeを再起動</li>
+                </ol>
+            </div>
+            <div class="step-item">
+                <h3>動作確認</h3>
+                <ol>
+                    <li>新しいフォルダを開く</li>
+                    <li>コマンドパレットから「Cline: Open」を実行</li>
+                    <li>Clineの機能が利用可能になっていることを確認</li>
+                </ol>
+            </div>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>💡 便利な設定</h3>
+                <ul>
+                    <li>キーボードショートカットのカスタマイズ</li>
+                    <li>自動補完機能の有効化</li>
+                    <li>テーマのカスタマイズ</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>⚠️ 注意点</h3>
+                <ul>
+                    <li>VS Codeの最新版を使用</li>
+                    <li>インターネット接続が必要</li>
+                    <li>管理者権限が必要な場合あり</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>GitHub Projectsの詳細設定</h2>
+        <div class="task-board">
+            <div class="task-column">
+                <h3>プロジェクト作成</h3>
+                <div class="task-item">1. リポジトリの「Projects」タブを開く</div>
+                <div class="task-item">2. 「New project」をクリック</div>
+                <div class="task-item">3. テンプレートを選択（Table/Board）</div>
+                <div class="task-item">4. プロジェクト名を設定</div>
+            </div>
+            <div class="task-column">
+                <h3>カスタマイズ</h3>
+                <div class="task-item">1. 列の追加/編集</div>
+                <div class="task-item">2. ラベルの作成</div>
+                <div class="task-item">3. フィールドの追加</div>
+                <div class="task-item">4. ビューの設定</div>
+            </div>
+            <div class="task-column">
+                <h3>チーム設定</h3>
+                <div class="task-item">1. メンバーの招待</div>
+                <div class="task-item">2. 権限の設定</div>
+                <div class="task-item">3. 通知の設定</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>タスク管理の実践ステップ</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>1. プロジェクトの準備</h3>
+                <ul>
+                    <li>目的の明確化</li>
+                    <li>期間の設定</li>
+                    <li>メンバーの役割決定</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>2. タスクの作成と管理</h3>
+                <ul>
+                    <li>タスクの洗い出し</li>
+                    <li>優先順位付け</li>
+                    <li>担当者のアサイン</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>3. 進捗管理</h3>
+                <ul>
+                    <li>定期的な更新</li>
+                    <li>ステータスの変更</li>
+                    <li>ブロッカーの特定</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>4. レビューと改善</h3>
+                <ul>
+                    <li>週次レビュー</li>
+                    <li>フィードバックの収集</li>
+                    <li>プロセスの改善</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>コマンドラインでの操作詳細</h2>
+        <div class="command-box">
+            # タスクの追加<br>
+            cline task "新規タスク" --assignee "担当者" --due "2024-03-01"<br><br>
+            # タスクの更新<br>
+            cline task update "タスクID" --status "進行中"<br><br>
+            # タスクの完了<br>
+            cline task complete "タスクID"<br><br>
+            # タスク一覧の表示<br>
+            cline task list --filter "担当者:自分"
+        </div>
+        <div class="step-list">
+            <div class="step-item">コマンドは必ずプロジェクトのルートディレクトリで実行</div>
+            <div class="step-item">--helpオプションで各コマンドのヘルプを表示可能</div>
+            <div class="step-item">上下キーで過去のコマンド履歴を表示</div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>効率的な作業のコツ</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🎯 タスク分割のコツ</h3>
+                <ul>
+                    <li>2時間以内で終わる大きさに</li>
+                    <li>明確な完了条件を設定</li>
+                    <li>依存関係を明記</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>📅 時間管理のコツ</h3>
+                <ul>
+                    <li>バッファを含めた期限設定</li>
+                    <li>定期的な進捗確認</li>
+                    <li>期限超過の早期報告</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>👥 コミュニケーションのコツ</h3>
+                <ul>
+                    <li>毎日の簡単な更新</li>
+                    <li>問題の早期共有</li>
+                    <li>成果の可視化</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>📊 レポートのコツ</h3>
+                <ul>
+                    <li>定期的な進捗レポート</li>
+                    <li>グラフや図の活用</li>
+                    <li>重要ポイントの強調</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>トラブルシューティング</h2>
+        <div class="task-board">
+            <div class="task-column">
+                <h3>よくある問題</h3>
+                <div class="task-item">✘ コマンドが動かない</div>
+                <div class="task-item">✘ 同期が遅い</div>
+                <div class="task-item">✘ 権限エラー</div>
+            </div>
+            <div class="task-column">
+                <h3>解決方法</h3>
+                <div class="task-item">✔️ バージョン確認</div>
+                <div class="task-item">✔️ キャッシュクリア</div>
+                <div class="task-item">✔️ 権限の確認</div>
+            </div>
+            <div class="task-column">
+                <h3>予防策</h3>
+                <div class="task-item">📌 定期的な更新</div>
+                <div class="task-item">📌 バックアップ</div>
+                <div class="task-item">📌 ドキュメント確認</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>次のステップ</h2>
+        <div class="task-board">
+            <div class="task-column">
+                <h3>Step 1</h3>
+                <div class="task-item">簡単なタスクから始める</div>
+            </div>
+            <div class="task-column">
+                <h3>Step 2</h3>
+                <div class="task-item">機能を徐々に使いこなす</div>
+            </div>
+            <div class="task-column">
+                <h3>Step 3</h3>
+                <div class="task-item">チームでの活用を始める</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                window.scrollBy(0, window.innerHeight);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                window.scrollBy(0, -window.innerHeight);
+            }
+        });
+    </script>
+</body>
+</html>

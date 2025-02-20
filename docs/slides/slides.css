@@ -1,0 +1,429 @@
+/* 全体のスタイル */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #10b981;
+    --accent-color: #ef4444;
+    --text-color: #1f2937;
+    --background-color: #f3f4f6;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.reveal {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 22px;
+    color: var(--text-color);
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+    color: var(--text-color);
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2em;
+}
+
+.reveal h1 {
+    font-size: 3.2em;
+    background: linear-gradient(45deg, var(--primary-color), #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.reveal h2 {
+    font-size: 2.4em;
+    position: relative;
+    padding-bottom: 0.3em;
+}
+
+.reveal h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.reveal h3 { font-size: 1.6em; }
+
+/* タイトルスライド */
+.title-slide {
+    text-align: center;
+}
+
+.title-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+    margin-top: 3em;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.feature {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2em;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature .icon {
+    font-size: 2em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* 学習項目グリッド */
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.learning-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2em;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.learning-item:hover {
+    transform: translateY(-5px);
+}
+
+.learning-steps {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.learning-steps li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.learning-steps li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+}
+
+/* 実践グリッド */
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.practice-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5em;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.practice-item:hover {
+    transform: translateY(-5px);
+}
+
+.practice-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.practice-list li {
+    margin-bottom: 15px;
+}
+
+.practice-list ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+/* 統合グリッド */
+.integration-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.integration-item {
+    background: #fff;
+    padding: 2.5em;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.integration-item:hover {
+    transform: translateY(-5px);
+}
+
+.integration-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.integration-list li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.integration-list li::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: #3498db;
+}
+
+/* コードブロック */
+.code-block {
+    background: var(--text-color);
+    color: #ecf0f1;
+    padding: 1.5em;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 1.5em 0;
+    white-space: pre;
+    box-shadow: var(--box-shadow);
+}
+
+/* 成功へのグリッド */
+.success-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.success-item {
+    background: #fff;
+    padding: 2.5em;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.success-item:hover {
+    transform: translateY(-5px);
+}
+
+.success-item ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.success-item li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.success-item li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+}
+
+/* 実践のヒント */
+.practice-tips {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.tip {
+    background: #fff;
+    padding: 2.5em;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.tip:hover {
+    transform: translateY(-5px);
+}
+
+.tip ol, .tip ul {
+    padding-left: 25px;
+}
+
+.tip li {
+    margin-bottom: 12px;
+}
+
+/* 最終セクション */
+.end-slide {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.final-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+    margin: 2em auto;
+    width: 100%;
+    max-width: 1200px;
+    text-align: left;
+}
+
+.point {
+    background: #fff;
+    padding: 2.5em;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.2s ease;
+}
+
+.point:hover {
+    transform: translateY(-5px);
+}
+
+.point ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.point li {
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.point li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+}
+
+.closing-message {
+    margin-top: 3em;
+    padding: 2em;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 800px;
+}
+
+.highlight {
+    font-size: 2em;
+    background: linear-gradient(45deg, var(--primary-color), #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5em;
+    line-height: 1.4;
+}
+
+.sub-message {
+    color: var(--text-color);
+    font-style: italic;
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .reveal {
+        font-size: 20px;
+    }
+
+    .title-features,
+    .learning-grid,
+    .practice-grid,
+    .integration-grid,
+    .success-grid,
+    .practice-tips,
+    .final-points {
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 960px) {
+    .reveal {
+        font-size: 18px;
+    }
+
+    .title-features,
+    .learning-grid,
+    .practice-grid,
+    .integration-grid,
+    .success-grid,
+    .practice-tips,
+    .final-points {
+        grid-template-columns: 1fr;
+        gap: 2em;
+        max-width: 600px;
+    }
+
+    .reveal h1 { font-size: 2.5em; }
+    .reveal h2 { font-size: 2em; }
+    .reveal h3 { font-size: 1.4em; }
+}
+
+@media (max-width: 480px) {
+    .reveal {
+        font-size: 16px;
+    }
+
+    .feature,
+    .learning-item,
+    .practice-item,
+    .integration-item,
+    .success-item,
+    .tip,
+    .point {
+        padding: 1.5em;
+    }
+
+    .closing-message {
+        padding: 1.5em;
+    }
+
+    .highlight {
+        font-size: 1.6em;
+    }
+}
+
+/* アニメーション */
+.reveal .slides section .fragment {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+}
+
+.reveal .slides section .fragment.visible {
+    opacity: 1;
+    visibility: visible;
+}

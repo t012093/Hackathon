@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cline 実践活用ガイド</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトルスライド -->
+      <section class="title-slide">
+        <h1>Cline<br>実践活用ガイド</h1>
+        <h2>AIを活用した効率的な開発環境の構築</h2>
+        <div class="title-features">
+          <div class="feature">
+            <span class="icon">🤖</span>
+            <h3>AI支援</h3>
+            <p>インテリジェントな開発支援</p>
+          </div>
+          <div class="feature">
+            <span class="icon">⚡</span>
+            <h3>効率化</h3>
+            <p>開発作業の自動化</p>
+          </div>
+          <div class="feature">
+            <span class="icon">🔧</span>
+            <h3>カスタマイズ</h3>
+            <p>柔軟な環境設定</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 基本セットアップ -->
+      <section>
+        <h2>基本セットアップと設定</h2>
+        <div class="setup-grid">
+          <div class="setup-item">
+            <span class="icon">📥</span>
+            <h3>インストール手順</h3>
+            <div class="code-block">
+              <pre><code class="language-bash"># VSCodeマーケットプレイスから
+code --install-extension saoudrizwan.cline
+
+# 必要な権限設定
+- ワークスペースアクセス
+- ファイル操作権限
+- ターミナル実行権限</code></pre>
+            </div>
+          </div>
+          <div class="setup-item">
+            <span class="icon">⚙️</span>
+            <h3>設定ファイル</h3>
+            <div class="code-block">
+              <pre><code class="language-json">{
+  "cline.workspaceDirectory": "/path/to/project",
+  "cline.autoApprove": true,
+  "cline.theme": "light"
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 基本的な操作方法 -->
+      <section>
+        <h2>基本的な操作方法</h2>
+        <div class="management-grid">
+          <div class="management-item">
+            <span class="icon">📝</span>
+            <h3>ファイル操作</h3>
+            <ul class="management-details">
+              <li>新規ファイルの作成</li>
+              <li>既存ファイルの編集</li>
+              <li>ファイル内容の置換</li>
+              <li>正規表現を使用した検索</li>
+            </ul>
+          </div>
+          <div class="management-item">
+            <span class="icon">💻</span>
+            <h3>コマンド実行</h3>
+            <div class="code-block">
+              <pre><code class="language-bash"># 開発サーバー起動
+execute_command "npm run dev"
+
+# ファイル作成
+write_to_file "src/components/Button.js"
+
+# ファイル検索
+search_files "src" "console\.log"</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MCP活用 -->
+      <section>
+        <h2>高度な使用方法（MCP活用）</h2>
+        <div class="automation-content">
+          <div class="automation-rules">
+            <h3>🔌 MCPツール例</h3>
+            <pre><code class="language-javascript">// Brave検索の使用
+use_mcp_tool {
+  server_name: "brave-search",
+  tool_name: "brave_web_search",
+  arguments: {
+    query: "最新のReactパターン",
+    count: 5
+  }
+}
+
+// Puppeteerでのスクリーンショット
+use_mcp_tool {
+  server_name: "puppeteer",
+  tool_name: "puppeteer_screenshot",
+  arguments: {
+    name: "homepage",
+    selector: ".main-content"
+  }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 効率的なワークフロー -->
+      <section>
+        <h2>効率的なワークフロー</h2>
+        <div class="workflow-grid">
+          <div class="workflow-item">
+            <span class="icon">📋</span>
+            <h3>開発フロー</h3>
+            <ul class="workflow-details">
+              <li>必要なファイルの検索</li>
+              <li>既存コードの確認</li>
+              <li>新規ファイルの作成</li>
+              <li>リアルタイムプレビュー</li>
+            </ul>
+          </div>
+          <div class="workflow-item">
+            <span class="icon">🔄</span>
+            <h3>自動化パターン</h3>
+            <ul class="workflow-details">
+              <li>複数ファイルの一括処理</li>
+              <li>定型作業の効率化</li>
+              <li>パターン検索と置換</li>
+              <li>テスト自動生成</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- トラブルシューティング -->
+      <section>
+        <h2>トラブルシューティング</h2>
+        <div class="trouble-grid">
+          <div class="trouble-item">
+            <span class="icon">🔍</span>
+            <h3>一般的な問題</h3>
+            <ul class="trouble-details">
+              <li>ファイルアクセスエラー
+                <ul>
+                  <li>権限の確認</li>
+                  <li>パスの正確性確認</li>
+                </ul>
+              </li>
+              <li>コマンド実行エラー
+                <ul>
+                  <li>環境変数の確認</li>
+                  <li>依存関係の確認</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="trouble-item">
+            <span class="icon">💡</span>
+            <h3>最適化のヒント</h3>
+            <ul class="trouble-details">
+              <li>検索の最適化
+                <ul>
+                  <li>適切なパターン使用</li>
+                  <li>検索範囲の最適化</li>
+                </ul>
+              </li>
+              <li>パフォーマンス向上
+                <ul>
+                  <li>バッチ処理の活用</li>
+                  <li>キャッシュの活用</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section class="end-slide">
+        <h2>Clineで実現する開発効率化</h2>
+        <div class="tips-grid">
+          <div class="tip-item">
+            <span class="icon">⚡</span>
+            <h3>生産性向上</h3>
+            <p>AIによる開発作業の効率化</p>
+          </div>
+          <div class="tip-item">
+            <span class="icon">🔄</span>
+            <h3>自動化</h3>
+            <p>定型作業の自動化による時間節約</p>
+          </div>
+          <div class="tip-item">
+            <span class="icon">📈</span>
+            <h3>品質向上</h3>
+            <p>一貫性のある開発プロセス</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      center: true,
+      progress: true,
+      controls: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0.1,
+      minScale: 0.2,
+      maxScale: 2.0,
+      display: 'flex',
+      overview: true,
+      viewDistance: 2,
+      autoPlayMedia: false,
+      keyboard: true,
+      touch: true
+    });
+  </script>
+</body>
+</html>

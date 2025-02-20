@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ハッカソン開発ガイド</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css">
+    <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- タイトルスライド -->
+            <section class="title-slide">
+                <h1>ハッカソン開発ガイド</h1>
+                <div class="title-features">
+                    <div class="feature">
+                        <span class="icon">🚀</span>
+                        <h3>効率的な開発</h3>
+                        <p>最新のツールとベストプラクティス</p>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🤖</span>
+                        <h3>自動化の活用</h3>
+                        <p>CI/CDとGitHub Actions</p>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">👥</span>
+                        <h3>チーム協業</h3>
+                        <p>効果的なコミュニケーション</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 概要 -->
+            <section>
+                <h2>開発フローの全体像</h2>
+                <div class="learning-grid">
+                    <div class="learning-item">
+                        <h3>1. プロジェクト管理</h3>
+                        <ul class="learning-steps">
+                            <li>GitHub Projectsの活用</li>
+                            <li>タスク管理の効率化</li>
+                            <li>進捗の可視化</li>
+                        </ul>
+                    </div>
+                    <div class="learning-item">
+                        <h3>2. 開発プロセス</h3>
+                        <ul class="learning-steps">
+                            <li>ブランチ戦略</li>
+                            <li>コードレビュー</li>
+                            <li>品質管理</li>
+                        </ul>
+                    </div>
+                    <div class="learning-item">
+                        <h3>3. 自動化と効率化</h3>
+                        <ul class="learning-steps">
+                            <li>Clineの活用</li>
+                            <li>CI/CDパイプライン</li>
+                            <li>自動テスト</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- プロジェクト管理 -->
+            <section>
+                <h2>効果的なプロジェクト管理</h2>
+                <div class="practice-grid">
+                    <div class="practice-item">
+                        <h3>GitHub Projects活用法</h3>
+                        <ul class="practice-list">
+                            <li>ボード設計
+                                <ul>
+                                    <li>効率的なカンバン構成</li>
+                                    <li>自動化ルールの設定</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="practice-item">
+                        <h3>イシュー管理</h3>
+                        <ul class="practice-list">
+                            <li>テンプレートの活用
+                                <ul>
+                                    <li>明確な記述ガイドライン</li>
+                                    <li>効率的なトラッキング</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 開発プロセス -->
+            <section>
+                <h2>開発ワークフロー</h2>
+                <div class="integration-grid">
+                    <div class="integration-item">
+                        <h3>ブランチ戦略</h3>
+                        <div class="code-block" data-language="git">
+                            feature/ → develop → release/ → main
+                        </div>
+                    </div>
+                    <div class="integration-item">
+                        <h3>コミットメッセージ</h3>
+                        <div class="code-block" data-language="git">
+                            feat(scope): 変更内容の要約
+
+                            - 詳細な変更点
+                            - 影響範囲
+
+                            Closes #123
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ツール活用 -->
+            <section>
+                <h2>開発支援ツール</h2>
+                <div class="integration-grid">
+                    <div class="integration-item">
+                        <h3>Clineの活用</h3>
+                        <ul class="integration-list">
+                            <li>効率的なコード生成</li>
+                            <li>自動テスト生成</li>
+                            <li>ドキュメント自動化</li>
+                        </ul>
+                    </div>
+                    <div class="integration-item">
+                        <h3>CI/CD自動化</h3>
+                        <ul class="integration-list">
+                            <li>GitHub Actions活用</li>
+                            <li>自動デプロイ</li>
+                            <li>品質チェック</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- まとめ：開発の成功に向けて -->
+            <section>
+                <h2>開発の成功に向けて</h2>
+                <div class="success-grid">
+                    <div class="success-item">
+                        <h3>🎯 目標設定と計画</h3>
+                        <ul>
+                            <li>明確なゴール設定</li>
+                            <li>実現可能なマイルストーン</li>
+                            <li>リスク管理と対策</li>
+                        </ul>
+                    </div>
+                    <div class="success-item">
+                        <h3>👥 チーム協業</h3>
+                        <ul>
+                            <li>定期的なコミュニケーション</li>
+                            <li>役割と責任の明確化</li>
+                            <li>知識共有の促進</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 具体的な実践ポイント -->
+            <section>
+                <h2>具体的な実践ポイント</h2>
+                <div class="practice-tips">
+                    <div class="tip">
+                        <h3>💡 効率的な開発サイクル</h3>
+                        <ol>
+                            <li>小さな単位での実装</li>
+                            <li>頻繁なコミットとレビュー</li>
+                            <li>継続的なテストと改善</li>
+                        </ol>
+                    </div>
+                    <div class="tip">
+                        <h3>🛠 ツール活用のベストプラクティス</h3>
+                        <ul>
+                            <li>自動化による効率化</li>
+                            <li>一貫したワークフロー</li>
+                            <li>品質管理の徹底</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 最終セクション -->
+            <section class="end-slide">
+                <h2>成功への道のり</h2>
+                <div class="final-points">
+                    <div class="point">
+                        <h3>🎯 目標達成のために</h3>
+                        <ul>
+                            <li>計画的な進行</li>
+                            <li>効果的なツール活用</li>
+                            <li>チーム力の最大化</li>
+                        </ul>
+                    </div>
+                    <div class="point">
+                        <h3>💪 継続的な改善</h3>
+                        <ul>
+                            <li>振り返りと学習</li>
+                            <li>プロセスの最適化</li>
+                            <li>モチベーション維持</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="closing-message">
+                    <p class="highlight">一人一人の力を結集し、<br>革新的なプロダクトを創り上げよう</p>
+                    <p class="sub-message">詳細な実践方法は各ガイドを参照してください</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            transition: 'slide',
+            controls: true,
+            progress: true
+        });
+    </script>
+</body>
+</html>

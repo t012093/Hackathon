@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>開発ワークフロー ガイドライン</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
+  <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトルスライド -->
+      <section class="title-slide">
+        <h1>開発ワークフロー<br>ガイドライン</h1>
+        <h2>効率的なチーム開発のための標準プロセス</h2>
+        <div class="title-features">
+          <div class="feature">
+            <span class="icon">🌿</span>
+            <h3>ブランチ管理</h3>
+            <p>整理された開発フロー</p>
+          </div>
+          <div class="feature">
+            <span class="icon">📝</span>
+            <h3>コミット規約</h3>
+            <p>統一された記録方式</p>
+          </div>
+          <div class="feature">
+            <span class="icon">🔄</span>
+            <h3>品質管理</h3>
+            <p>一貫した品質基準</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ブランチ戦略 -->
+      <section>
+        <h2>ブランチ戦略</h2>
+        <div class="branch-structure">
+          <div class="code-block">
+            <pre><code class="language-plaintext">main
+  └── develop
+       ├── feature/
+       ├── bugfix/
+       └── hotfix/</code></pre>
+          </div>
+          <div class="branch-details">
+            <div class="branch-item">
+              <h3>🌳 メインブランチ</h3>
+              <ul>
+                <li>main: プロダクション環境用</li>
+                <li>develop: 開発環境の最新版</li>
+              </ul>
+            </div>
+            <div class="branch-item">
+              <h3>🌱 作業ブランチ</h3>
+              <ul>
+                <li>feature/: 新機能開発</li>
+                <li>bugfix/: バグ修正</li>
+                <li>hotfix/: 緊急対応</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- コミットメッセージ規約 -->
+      <section>
+        <h2>コミットメッセージ規約</h2>
+        <div class="commit-format">
+          <div class="code-block">
+            <pre><code class="language-plaintext">【基本フォーマット】
+<type>: <subject>
+
+<body>
+
+<footer></code></pre>
+          </div>
+          <div class="commit-types">
+            <div class="type-item">
+              <span class="icon">✨</span>
+              <h4>feat</h4>
+              <p>新機能</p>
+            </div>
+            <div class="type-item">
+              <span class="icon">🐛</span>
+              <h4>fix</h4>
+              <p>バグ修正</p>
+            </div>
+            <div class="type-item">
+              <span class="icon">📚</span>
+              <h4>docs</h4>
+              <p>ドキュメント</p>
+            </div>
+            <div class="type-item">
+              <span class="icon">♻️</span>
+              <h4>refactor</h4>
+              <p>リファクタリング</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 開発プロセス -->
+      <section>
+        <h2>開発プロセス</h2>
+        <div class="process-flow">
+          <div class="process-item">
+            <span class="icon">📋</span>
+            <h3>1. Issue作成</h3>
+            <div class="code-block">
+              <pre><code class="language-markdown">## 概要
+[機能の説明]
+
+## 目的
+- 実現したいこと
+- 解決する課題
+
+## タスク
+- [ ] 実装項目1
+- [ ] 実装項目2</code></pre>
+            </div>
+          </div>
+          <div class="process-item">
+            <span class="icon">🔄</span>
+            <h3>2. 作業フロー</h3>
+            <ul class="process-steps">
+              <li>ブランチ作成</li>
+              <li>実装作業</li>
+              <li>テスト実行</li>
+              <li>PRレビュー</li>
+              <li>マージ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 品質管理基準 -->
+      <section>
+        <h2>品質管理基準</h2>
+        <div class="quality-grid">
+          <div class="quality-item">
+            <span class="icon">✅</span>
+            <h3>必須チェック項目</h3>
+            <ul class="quality-list">
+              <li>リンター/フォーマッターのパス</li>
+              <li>ユニットテストのパス</li>
+              <li>カバレッジ80%以上</li>
+              <li>セキュリティスキャンのパス</li>
+            </ul>
+          </div>
+          <div class="quality-item">
+            <span class="icon">🔍</span>
+            <h3>レビュー基準</h3>
+            <ul class="quality-list">
+              <li>コーディング規約の遵守</li>
+              <li>アーキテクチャの一貫性</li>
+              <li>パフォーマンスへの影響</li>
+              <li>セキュリティ考慮</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- リリースフロー -->
+      <section>
+        <h2>リリースフロー</h2>
+        <div class="release-process">
+          <div class="release-item">
+            <span class="icon">📦</span>
+            <h3>リリース準備</h3>
+            <div class="code-block">
+              <pre><code class="language-bash"># バージョン更新
+npm version patch/minor/major
+
+# リリースブランチ作成
+git checkout -b release/v1.0.0</code></pre>
+            </div>
+          </div>
+          <div class="release-item">
+            <span class="icon">📋</span>
+            <h3>チェックリスト</h3>
+            <ul class="release-checks">
+              <li>✓ テスト完了</li>
+              <li>✓ 環境変数確認</li>
+              <li>✓ バックアップ作成</li>
+              <li>✓ デプロイ実行</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section class="end-slide">
+        <h2>開発フロー成功のポイント</h2>
+        <div class="tips-grid">
+          <div class="tip-item">
+            <span class="icon">🎯</span>
+            <h3>一貫性</h3>
+            <p>統一された開発プロセス</p>
+          </div>
+          <div class="tip-item">
+            <span class="icon">👥</span>
+            <h3>コミュニケーション</h3>
+            <p>チーム間の密な連携</p>
+          </div>
+          <div class="tip-item">
+            <span class="icon">📈</span>
+            <h3>継続的改善</h3>
+            <p>定期的な見直しと最適化</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      center: true,
+      progress: true,
+      controls: true,
+      transition: 'slide',
+      width: '100%',
+      height: '100%',
+      margin: 0.1,
+      minScale: 0.2,
+      maxScale: 2.0,
+      display: 'flex',
+      overview: true,
+      viewDistance: 2,
+      autoPlayMedia: false,
+      keyboard: true,
+      touch: true
+    });
+  </script>
+</body>
+</html>
