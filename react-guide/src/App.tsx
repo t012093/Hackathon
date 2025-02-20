@@ -7,6 +7,7 @@ import { TeamManagement } from './components/sections/TeamManagement';
 import { ClineUsage } from './components/sections/ClineUsage';
 import { TroubleshootingGuide } from './components/sections/TroubleshootingGuide';
 import { PracticalGuide } from './components/sections/PracticalGuide';
+import { VisualGuide } from './components/sections/VisualGuide';
 import { Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -49,6 +50,7 @@ function App() {
 
           <HackathonGuide />
           <TeamManagement />
+          <VisualGuide />
           <PracticalGuide />
           <ClineUsage />
           <TroubleshootingGuide />
