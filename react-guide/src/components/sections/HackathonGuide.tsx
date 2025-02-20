@@ -1,0 +1,323 @@
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+} from '@mui/material';
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+} from '@mui/lab';
+import { motion } from 'framer-motion';
+import GroupsIcon from '@mui/icons-material/Groups';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import PersonIcon from '@mui/icons-material/Person';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CodeIcon from '@mui/icons-material/Code';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+
+export const HackathonGuide = () => {
+  const roles = [
+    {
+      title: 'プロダクトオーナー',
+      icon: <PersonIcon />,
+      description: 'プロジェクトの方向性を決定し、優先順位をつける役割',
+      tasks: [
+        'プロジェクトのゴール設定',
+        'タスクの優先順位付け',
+        'ステークホルダーとの調整',
+      ],
+    },
+    {
+      title: 'プロジェクトマネージャー',
+      icon: <TimelineIcon />,
+      description: 'プロジェクトの進行を管理し、チームをサポートする役割',
+      tasks: [
+        'スケジュール管理',
+        'タスクの割り当て',
+        'ブロッカーの解消',
+      ],
+    },
+    {
+      title: 'デザイナー',
+      icon: <DesignServicesIcon />,
+      description: 'UIデザインとユーザー体験を担当する役割',
+      tasks: [
+        'ワイヤーフレーム作成',
+        'UI/UXデザイン',
+        'プロトタイプ作成',
+      ],
+    },
+    {
+      title: 'エンジニア',
+      icon: <CodeIcon />,
+      description: '技術的な実装を担当する役割',
+      tasks: [
+        'コーディング',
+        'テスト',
+        '技術的な検証',
+      ],
+    },
+  ];
+
+  const schedule = [
+    {
+      time: '1日目 10:00',
+      title: 'キックオフ',
+      description: 'チーム形成、アイデア出し',
+    },
+    {
+      time: '1日目 13:00',
+      title: 'プランニング',
+      description: 'GitHub Projectsでタスク整理',
+    },
+    {
+      time: '1日目 15:00',
+      title: '開発開始',
+      description: 'Clineを活用した実装',
+    },
+    {
+      time: '2日目 10:00',
+      title: '中間チェック',
+      description: '進捗確認と方向性の調整',
+    },
+    {
+      time: '2日目 15:00',
+      title: 'プレゼン準備',
+      description: 'デモの準備と資料作成',
+    },
+    {
+      time: '2日目 17:00',
+      title: '成果発表',
+      description: 'プレゼンテーション',
+    },
+  ];
+
+  return (
+    <Box component="section" mb={6}>
+      <Typography
+        variant="h2"
+        component={motion.h2}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        mb={4}
+      >
+        ハッカソンガイド
+      </Typography>
+
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <Card
+            component={motion.div}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <CardContent>
+              <Typography variant="h5" gutterBottom>
+                チーム編成とロール
+              </Typography>
+              <Grid container spacing={3}>
+                {roles.map((role) => (
+                  <Grid item xs={12} md={3} key={role.title}>
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        p: 2,
+                        height: '100%',
+                        transition: 'transform 0.2s',
+                        '&:hover': {
+                          transform: 'translateY(-4px)',
+                        },
+                      }}
+                    >
+                      <Box display="flex" alignItems="center" mb={2}>
+                        {role.icon}
+                        <Typography variant="h6" ml={1}>
+                          {role.title}
+                        </Typography>
+                      </Box>
+                      <Typography color="text.secondary" paragraph>
+                        {role.description}
+                      </Typography>
+                      <List dense>
+                        {role.tasks.map((task) => (
+                          <ListItem key={task}>
+                            <ListItemIcon>
+                              <CheckCircleIcon color="primary" fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary={task} />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Paper>
+                  </Grid>
+                ))}
+              </Grid>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Card
+            component={motion.div}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <CardContent>
+              <Typography variant="h5" gutterBottom>
+                タイムテーブル
+              </Typography>
+              <Timeline position="alternate">
+                {schedule.map((item, index) => (
+                  <TimelineItem key={item.time}>
+                    <TimelineSeparator>
+                      <TimelineDot color="primary" />
+                      {index < schedule.length - 1 && <TimelineConnector />}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <Paper
+                        elevation={3}
+                        sx={{
+                          p: 2,
+                          backgroundColor: 'background.default',
+                        }}
+                      >
+                        <Typography variant="h6">{item.time}</Typography>
+                        <Typography variant="subtitle1" color="primary">
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {item.description}
+                        </Typography>
+                      </Paper>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
+              </Timeline>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Card
+            component={motion.div}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <CardContent>
+              <Typography variant="h5" gutterBottom>
+                評価基準
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={4}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <EmojiEventsIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        技術面（30点）
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="Clineの効果的な活用" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="GitHub Projectsの活用度" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="実装の完成度" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <GroupsIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        チーム運営（40点）
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="タスク管理の適切さ" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="コミュニケーションの円滑さ" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="役割分担の明確さ" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <AssessmentIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        プレゼン（30点）
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="デモの分かりやすさ" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="発表の明確さ" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="質疑応答の対応" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};

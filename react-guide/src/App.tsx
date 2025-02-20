@@ -2,6 +2,9 @@ import { Layout } from './components/Layout';
 import { ToolSetup } from './components/sections/ToolSetup';
 import { ClineSetup } from './components/sections/ClineSetup';
 import { IssueManagement } from './components/sections/IssueManagement';
+import { HackathonGuide } from './components/sections/HackathonGuide';
+import { TeamManagement } from './components/sections/TeamManagement';
+import { ClineUsage } from './components/sections/ClineUsage';
 import { Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -42,6 +45,9 @@ function App() {
             </Typography>
           </Box>
 
+          <HackathonGuide />
+          <TeamManagement />
+          <ClineUsage />
           <ToolSetup />
           <ClineSetup />
           <IssueManagement />
