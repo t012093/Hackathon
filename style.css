@@ -200,23 +200,23 @@
 .results-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5em;
+    gap: 1.5em;
     margin: 2em auto;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .result-item {
     background: #fff;
-    border-radius: 16px;
-    padding: 2em;
+    border-radius: 10px;
+    padding: 1.2em;
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: transform 0.2s ease;
 }
 
 .result-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 1200px) {
@@ -293,93 +293,129 @@
 }
 
 .result-item .icon {
-    font-size: 2.5em;
-    margin-bottom: 0.8em;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
     display: block;
 }
 
 .result-item h3 {
-    font-size: 1.4em;
-    margin-bottom: 0.8em;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
     color: var(--primary-color);
 }
 
 .result-item p {
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 0.9em;
+    line-height: 1.4;
     color: var(--text-color);
+    margin-bottom: 0.6em;
 }
 
 /* 準備リスト */
 .preparation-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2em;
+    gap: 1.5em;
     margin: 2em auto;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .prep-item {
     background: #fff;
-    border-radius: 16px;
-    padding: 1.8em;
-    display: flex;
-    align-items: center;
-    gap: 1.5em;
+    border-radius: 10px;
+    padding: 1.2em;
+    text-align: center;
     box-shadow: var(--box-shadow);
     transition: transform 0.2s ease;
 }
 
 .prep-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .prep-item .icon {
-    font-size: 2em;
+    font-size: 1.8em;
     color: var(--primary-color);
+    margin-bottom: 0.5em;
+    display: block;
 }
 
-.prep-item p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    margin: 0;
+.prep-item h3 {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 0.5em;
+}
+
+.prep-item .prep-details {
+    text-align: left;
+    padding-left: 0.5em;
+    font-size: 0.85em;
 }
 
 /* サポート体制 */
 .support-system {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5em;
+    gap: 1.5em;
     margin: 2em auto;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 .support-item {
     background: #fff;
-    border-radius: 16px;
-    padding: 2.2em;
+    border-radius: 10px;
+    padding: 1.2em;
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .support-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .support-item .icon {
-    font-size: 2.5em;
-    margin-bottom: 0.8em;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
     display: block;
     color: var(--primary-color);
+    background: var(--background-color);
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    border-radius: 50%;
+    text-align: center;
 }
 
 .support-item h3 {
-    font-size: 1.4em;
-    margin-bottom: 0.8em;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
     color: var(--text-color);
+    position: relative;
+    padding-bottom: 0.4em;
+}
+
+.support-item h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+}
+
+.support-item .support-details {
+    width: 100%;
+    text-align: left;
+    margin-top: 1em;
 }
 
 /* 最終スライド */
@@ -412,6 +448,90 @@
 }
 
 /* 共通スタイル */
+/* サブアイテムのスタイル */
+.sub-items {
+    margin-top: 0.8em;
+    margin-left: 1.2em;
+    font-size: 0.9em;
+}
+
+.sub-items li {
+    margin: 0.4em 0;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.sub-items li:before {
+    content: "•";
+    color: var(--secondary-color);
+}
+
+/* 成果の詳細リスト */
+.result-details {
+    margin-top: 0.8em;
+    text-align: left;
+}
+
+.result-details li {
+    margin: 0.4em 0;
+    font-size: 0.85em;
+    color: var(--text-color);
+    opacity: 0.9;
+    padding-left: 1.2em;
+}
+
+.result-details li:before {
+    content: "✓";
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0.2em;
+}
+
+/* サポートの詳細リスト */
+.support-details {
+    margin-top: 0.8em;
+    text-align: left;
+}
+
+.support-details li {
+    margin: 0.4em 0;
+    font-size: 0.85em;
+    color: var(--text-color);
+    opacity: 0.9;
+    padding-left: 1.2em;
+    position: relative;
+}
+
+.support-details li:before {
+    content: "⚡";
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0.2em;
+}
+
+/* 準備の詳細リスト */
+.prep-details {
+    margin-top: 0.8em;
+    text-align: left;
+}
+
+.prep-details li {
+    margin: 0.4em 0;
+    font-size: 0.85em;
+    color: var(--text-color);
+    opacity: 0.9;
+    padding-left: 1.2em;
+    position: relative;
+}
+
+.prep-details li:before {
+    content: "→";
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0.2em;
+}
+
+/* 基本のリストスタイル */
 .reveal ul {
     list-style: none;
     padding-left: 0;
@@ -428,4 +548,39 @@
     position: absolute;
     left: 0;
     color: var(--primary-color);
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 960px) {
+    .sub-items,
+    .result-details,
+    .support-details,
+    .prep-details {
+        margin-left: 0.8em;
+    }
+
+    .support-item,
+    .prep-item {
+        padding: 1.5em;
+    }
+
+    .result-item {
+        padding: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .sub-items,
+    .result-details,
+    .support-details,
+    .prep-details {
+        margin-left: 0.5em;
+        font-size: 0.85em;
+    }
+
+    .support-item,
+    .prep-item,
+    .result-item {
+        padding: 1.2em;
+    }
 }
