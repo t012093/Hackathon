@@ -5,9 +5,6 @@ import {
   CardContent,
   Grid,
   Paper,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
   IconButton,
 } from '@mui/material';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
@@ -357,33 +354,6 @@ export const VisualGuide = () => {
               </Grid>
             ))}
           </Grid>
-
-          <Box mt={4}>
-            <Typography variant="h6" gutterBottom>
-              スクリーンショットギャラリー
-            </Typography>
-            <ImageList variant="masonry" cols={2} gap={16}>
-              {guideImages.map((item, index) => (
-                <ImageListItem key={item.image}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    style={{ borderRadius: 4, cursor: 'pointer' }}
-                    onClick={() => handleImageClick(index)}
-                  />
-                  <ImageListItemBar
-                    title={item.title}
-                    position="bottom"
-                    sx={{
-                      background:
-                        'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-                    }}
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
-          </Box>
         </CardContent>
       </Card>
 
