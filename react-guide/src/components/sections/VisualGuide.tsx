@@ -8,11 +8,31 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  IconButton,
 } from '@mui/material';
+import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import { ImageDialog } from '../ImageDialog';
+import React from 'react';
 import { motion } from 'framer-motion';
 import ImageIcon from '@mui/icons-material/Image';
 
 export const VisualGuide = () => {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+  const handleImageClick = (index: number) => {
+    setCurrentImageIndex(index);
+    setDialogOpen(true);
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => Math.min(prev + 1, guideImages.length - 1));
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => Math.max(prev - 1, 0));
+  };
+
   const guideImages = [
     {
       title: 'プロジェクトボードの作成',
@@ -24,10 +44,20 @@ export const VisualGuide = () => {
       image: '/src/assets/images/guide/create-project.png',
     },
     {
-      title: 'カンバンボードの設定と最適化',
+      title: 'ボードビューの選択と基本設定',
       description: `
-      <h3>1. "Board"ビューを選択</h3>
-
+      <h3>1. "Board"ビューの選択方法</h3>
+      <div style="margin-left: 12px; margin-bottom: 8px;">
+         • <strong>Views</strong>タブを選択<br/>
+         • <strong>Board</strong>オプションをクリック<br/>
+         • レイアウトとテーマをカスタマイズ
+      </div>
+      `,
+      image: '/src/assets/images/guide/board-setup.png',
+    },
+    {
+      title: 'カラムの設定とワークフロー',
+      description: `
       <h3>2. カラムの設定</h3>
       <div style="margin-left: 12px; margin-bottom: 8px;">
          • <strong>To Do:</strong> これから着手するタスク<br/>
@@ -35,25 +65,65 @@ export const VisualGuide = () => {
          • <strong>Review:</strong> レビュー待ちのタスク<br/>
          • <strong>Done:</strong> 完了したタスク
       </div>
-
-      <h3>3. カスタムフィールドの追加</h3>
+      <div style="margin-left: 12px;">
+         • カラムの追加/削除/並び替え<br/>
+         • WIP制限の設定<br/>
+         • カラムごとの条件設定
+      </div>
+      `,
+      image: '/src/assets/images/guide/board-setup.png',
+    },
+    {
+      title: 'カスタムフィールドの追加',
+      description: `
+      <h3>3. カスタムフィールドの設定</h3>
       <div style="margin-left: 12px; margin-bottom: 8px;">
          • <strong>Priority:</strong> High/Medium/Low<br/>
          • <strong>Type:</strong> Bug/Feature/Documentation<br/>
          • <strong>Story Points:</strong> 見積もり工数<br/>
          • <strong>Due Date:</strong> 期限設定
       </div>
-
-      <h3>4. ラベルの色分けとグループ化</h3>
-      <div style="margin-left: 12px; margin-bottom: 8px;">
-         • 重要度による色分け<br/>
-         • チーム別のグループ化
-      </div>
-
-      <h3>5. オートメーションの設定</h3>
       <div style="margin-left: 12px;">
-         • PRのマージでDoneに移動<br/>
-         • レビュー依頼時にReviewに移動
+         • フィールドタイプの選択<br/>
+         • 必須/任意の設定<br/>
+         • デフォルト値の設定
+      </div>
+      `,
+      image: '/src/assets/images/guide/board-setup.png',
+    },
+    {
+      title: 'ラベルの色分けとグループ化',
+      description: `
+      <h3>4. ラベル管理とグループ化</h3>
+      <div style="margin-left: 12px; margin-bottom: 8px;">
+         • <strong>ラベルの作成:</strong><br/>
+         - 重要度による色分け（赤: 高優先度, 黄: 中優先度, 緑: 低優先度）<br/>
+         - カテゴリー別の色分け（青: フロントエンド, 紫: バックエンド）
+      </div>
+      <div style="margin-left: 12px;">
+         • <strong>グループ化の設定:</strong><br/>
+         - チーム別のグループ化<br/>
+         - マイルストーン別のグループ化<br/>
+         - ステータス別のグループ化
+      </div>
+      `,
+      image: '/src/assets/images/guide/board-setup.png',
+    },
+    {
+      title: 'オートメーションの設定',
+      description: `
+      <h3>5. オートメーションルールの設定</h3>
+      <div style="margin-left: 12px; margin-bottom: 8px;">
+         • <strong>自動化ルール:</strong><br/>
+         - PRのマージでDoneに移動<br/>
+         - レビュー依頼時にReviewに移動<br/>
+         - 期限切れタスクの自動フラグ付け
+      </div>
+      <div style="margin-left: 12px;">
+         • <strong>通知設定:</strong><br/>
+         - ステータス変更時の通知<br/>
+         - メンション時の通知<br/>
+         - 期限前のリマインダー
       </div>
       `,
       image: '/src/assets/images/guide/board-setup.png',
@@ -229,18 +299,37 @@ export const VisualGuide = () => {
                   <Typography variant="h6" gutterBottom>
                     {item.title}
                   </Typography>
-                  <Box
-                    component="img"
-                    src={item.image}
-                    alt={item.title}
-                    sx={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 1,
-                      mb: 3,
-                      boxShadow: 3,
-                    }}
-                  />
+                  <Box sx={{ position: 'relative' }}>
+                    <Box
+                      component="img"
+                      src={item.image}
+                      alt={item.title}
+                      sx={{
+                        width: '100%',
+                        height: 'auto',
+                        borderRadius: 1,
+                        mb: 3,
+                        boxShadow: 3,
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => handleImageClick(index)}
+                    />
+                    <IconButton
+                      sx={{
+                        position: 'absolute',
+                        right: 8,
+                        top: 8,
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        color: 'white',
+                        '&:hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        },
+                      }}
+                      onClick={() => handleImageClick(index)}
+                    >
+                      <ZoomInIcon />
+                    </IconButton>
+                  </Box>
                   <Typography
                     variant="body1"
                     color="text.secondary"
@@ -274,13 +363,14 @@ export const VisualGuide = () => {
               スクリーンショットギャラリー
             </Typography>
             <ImageList variant="masonry" cols={2} gap={16}>
-              {guideImages.map((item) => (
+              {guideImages.map((item, index) => (
                 <ImageListItem key={item.image}>
                   <img
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
-                    style={{ borderRadius: 4 }}
+                    style={{ borderRadius: 4, cursor: 'pointer' }}
+                    onClick={() => handleImageClick(index)}
                   />
                   <ImageListItemBar
                     title={item.title}
@@ -296,6 +386,15 @@ export const VisualGuide = () => {
           </Box>
         </CardContent>
       </Card>
+
+      <ImageDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        images={guideImages}
+        currentIndex={currentImageIndex}
+        onNextImage={handleNextImage}
+        onPrevImage={handlePrevImage}
+      />
     </Box>
   );
 };
