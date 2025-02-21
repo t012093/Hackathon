@@ -3,6 +3,7 @@ import { ToolSetup } from './components/sections/ToolSetup';
 import { ClineSetup } from './components/sections/ClineSetup';
 import { IssueManagement } from './components/sections/IssueManagement';
 import { HackathonGuide } from './components/sections/HackathonGuide';
+import { WhyGitHubProjects } from './components/sections/WhyGitHubProjects';
 import { TeamManagement } from './components/sections/TeamManagement';
 import { ClineUsage } from './components/sections/ClineUsage';
 import { TroubleshootingGuide } from './components/sections/TroubleshootingGuide';
@@ -48,6 +49,7 @@ function App() {
             </Typography>
           </Box>
 
+          <WhyGitHubProjects />
           <HackathonGuide />
           <TeamManagement />
           <VisualGuide />

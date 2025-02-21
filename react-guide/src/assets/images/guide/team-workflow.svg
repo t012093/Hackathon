@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 中央のGitHub Projects -->
+  <g id="github-projects">
+    <circle cx="400" cy="150" r="70" fill="#f8f4ff" stroke="#6f42c1" stroke-width="2"/>
+    <text x="400" y="140" text-anchor="middle" font-family="Arial" font-size="16" fill="#6f42c1">GitHub</text>
+    <text x="400" y="160" text-anchor="middle" font-family="Arial" font-size="16" fill="#6f42c1">Projects</text>
+  </g>
+
+  <!-- コラボレーションツール -->
+  <g id="collaboration-tools">
+    <!-- Issues -->
+    <rect x="100" y="250" width="120" height="60" rx="5" fill="#e1bee7" stroke="#333"/>
+    <text x="160" y="285" text-anchor="middle" font-family="Arial">課題管理</text>
+    
+    <!-- Wiki -->
+    <rect x="280" y="250" width="120" height="60" rx="5" fill="#bbdefb" stroke="#333"/>
+    <text x="340" y="285" text-anchor="middle" font-family="Arial">ドキュメント</text>
+    
+    <!-- Projects -->
+    <rect x="460" y="250" width="120" height="60" rx="5" fill="#c8e6c9" stroke="#333"/>
+    <text x="520" y="285" text-anchor="middle" font-family="Arial">プロジェクト管理</text>
+    
+    <!-- Discussions -->
+    <rect x="640" y="250" width="120" height="60" rx="5" fill="#ffecb3" stroke="#333"/>
+    <text x="700" y="285" text-anchor="middle" font-family="Arial">ディスカッション</text>
+  </g>
+
+  <!-- ワークフロー -->
+  <g id="workflow-elements">
+    <!-- タスク管理 -->
+    <rect x="100" y="400" width="150" height="80" rx="5" fill="#e3f2fd" stroke="#333"/>
+    <text x="175" y="440" text-anchor="middle" font-family="Arial">
+      <tspan x="175" dy="-10">タスク管理</tspan>
+      <tspan x="175" dy="20">進捗追跡</tspan>
+    </text>
+
+    <!-- 情報共有 -->
+    <rect x="325" y="400" width="150" height="80" rx="5" fill="#f3e5f5" stroke="#333"/>
+    <text x="400" y="440" text-anchor="middle" font-family="Arial">
+      <tspan x="400" dy="-10">情報共有</tspan>
+      <tspan x="400" dy="20">ナレッジベース</tspan>
+    </text>
+
+    <!-- フィードバック -->
+    <rect x="550" y="400" width="150" height="80" rx="5" fill="#e8f5e9" stroke="#333"/>
+    <text x="625" y="440" text-anchor="middle" font-family="Arial">
+      <tspan x="625" dy="-10">フィードバック</tspan>
+      <tspan x="625" dy="20">改善提案</tspan>
+    </text>
+  </g>
+
+  <!-- 接続線 -->
+  <g id="connections" stroke="#666" stroke-width="2">
+    <!-- ツールとGitHubの接続 -->
+    <line x1="160" y1="250" x2="370" y2="180"/>
+    <line x1="340" y1="250" x2="380" y2="180"/>
+    <line x1="520" y1="250" x2="420" y2="180"/>
+    <line x1="700" y1="250" x2="430" y2="180"/>
+    
+    <!-- ツールとワークフローの接続 -->
+    <line x1="160" y1="310" x2="175" y2="400"/>
+    <line x1="340" y1="310" x2="400" y2="400"/>
+    <line x1="520" y1="310" x2="625" y2="400"/>
+  </g>
+
+  <!-- ラベル -->
+  <g id="labels" font-family="Arial" font-size="12" fill="#666">
+    <text x="400" y="50" text-anchor="middle" font-size="14" font-weight="bold">
+      非エンジニアでも分かりやすい
+    </text>
+    <text x="400" y="70" text-anchor="middle" font-size="14" font-weight="bold">
+      プロジェクト管理ツール
+    </text>
+  </g>
+</svg>
