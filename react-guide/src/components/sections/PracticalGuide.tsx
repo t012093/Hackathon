@@ -5,47 +5,15 @@ import {
   CardContent,
   Grid,
   Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Stepper,
   Step,
   StepLabel,
   StepContent,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import KeyboardIcon from '@mui/icons-material/Keyboard';
 import SchoolIcon from '@mui/icons-material/School';
 
 export const PracticalGuide = () => {
-  const shortcuts = [
-    {
-      category: 'GitHub Projects',
-      commands: [
-        { key: '?', description: 'キーボードショートカット一覧表示' },
-        { key: 'g p', description: 'プロジェクトへ移動' },
-        { key: 'c', description: '新規Issue作成' },
-        { key: '/', description: '検索' },
-        { key: 'j / k', description: '項目の上下移動' },
-        { key: 'x', description: '項目の選択/解除' },
-        { key: 'e', description: '項目の編集' },
-      ],
-    },
-    {
-      category: 'VS Code + Cline',
-      commands: [
-        { key: 'Ctrl/Cmd + Shift + P', description: 'コマンドパレット' },
-        { key: 'Ctrl/Cmd + `', description: 'ターミナル表示/非表示' },
-        { key: 'Alt + C', description: 'Clineを起動' },
-        { key: 'Ctrl/Cmd + Enter', description: 'コマンド実行' },
-        { key: 'Ctrl/Cmd + /u', description: '直前のコマンドをクリア' },
-      ],
-    },
-  ];
-
   const tutorials = [
     {
       title: 'プロジェクト設定からIssue作成まで',
@@ -121,52 +89,6 @@ export const PracticalGuide = () => {
       </Typography>
 
       <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <Card
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <CardContent>
-              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
-                <KeyboardIcon sx={{ mr: 1 }} />
-                便利なショートカットキー
-              </Typography>
-              <Grid container spacing={3}>
-                {shortcuts.map((section) => (
-                  <Grid item xs={12} md={6} key={section.category}>
-                    <TableContainer component={Paper} elevation={3}>
-                      <Table size="small">
-                        <TableHead>
-                          <TableRow>
-                            <TableCell colSpan={2}>
-                              <Typography variant="h6">{section.category}</Typography>
-                            </TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {section.commands.map((command) => (
-                            <TableRow key={command.key}>
-                              <TableCell
-                                component="th"
-                                scope="row"
-                                sx={{ fontFamily: 'monospace', whiteSpace: 'nowrap' }}
-                              >
-                                {command.key}
-                              </TableCell>
-                              <TableCell>{command.description}</TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </Grid>
-                ))}
-              </Grid>
-            </CardContent>
-          </Card>
-        </Grid>
-
         <Grid item xs={12}>
           <Card
             component={motion.div}

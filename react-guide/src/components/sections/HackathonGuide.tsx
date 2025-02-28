@@ -27,6 +27,10 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CodeIcon from '@mui/icons-material/Code';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 export const HackathonGuide = () => {
   const roles = [
@@ -74,34 +78,34 @@ export const HackathonGuide = () => {
 
   const schedule = [
     {
-      time: '1日目 10:00',
-      title: 'キックオフ',
-      description: 'チーム形成、アイデア出し',
+      time: '1日目 19:00-19:15',
+      title: 'オープニング',
+      description: '講座の概要説明、講師紹介、参加者自己紹介',
     },
     {
-      time: '1日目 13:00',
-      title: 'プランニング',
-      description: 'GitHub Projectsでタスク整理',
+      time: '1日目 19:15-20:00',
+      title: 'GitHub Projectsの基本',
+      description: 'GitHub Projectsの基本的な使い方を解説',
     },
     {
-      time: '1日目 15:00',
-      title: '開発開始',
-      description: 'Clineを活用した実装',
+      time: '1日目 20:00-20:30',
+      title: '質疑応答',
+      description: 'GitHub Projectsに関する質問を受け付け',
     },
     {
-      time: '2日目 10:00',
-      title: '中間チェック',
-      description: '進捗確認と方向性の調整',
+      time: '2日目 19:00-19:15',
+      title: '前回の復習',
+      description: 'GitHub Projectsの基本的な使い方を復習',
     },
     {
-      time: '2日目 15:00',
-      title: 'プレゼン準備',
-      description: 'デモの準備と資料作成',
+      time: '2日目 19:15-20:00',
+      title: 'Clineを活用したGitHub Projectsの応用',
+      description: 'Clineを活用したGitHub Projectsの効率的な管理方法',
     },
     {
-      time: '2日目 17:00',
-      title: '成果発表',
-      description: 'プレゼンテーション',
+      time: '2日目 20:00-20:30',
+      title: '質疑応答',
+      description: '演習結果の発表、フィードバック',
     },
   ];
 
@@ -207,6 +211,143 @@ export const HackathonGuide = () => {
                   </TimelineItem>
                 ))}
               </Timeline>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Card
+            component={motion.div}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <CardContent>
+              <Typography variant="h5" gutterBottom>
+                AIによる効率化提案
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={3}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <SmartToyIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        タスク分析と最適化
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="タスクの自動分類・優先順位付け" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="工数予測の自動化" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="リソース配分の最適化提案" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <AutoGraphIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        進捗管理の自動化
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="リアルタイム進捗トラッキング" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="ボトルネック検出" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="予実管理の自動化" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <FormatListBulletedIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        ドキュメント生成
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="議事録の自動作成" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="進捗レポートの自動生成" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="技術文書の下書き生成" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                  <Paper elevation={3} sx={{ p: 2 }}>
+                    <Box display="flex" alignItems="center" mb={2}>
+                      <AutoAwesomeIcon color="primary" />
+                      <Typography variant="h6" ml={1}>
+                        クリエイティブ支援
+                      </Typography>
+                    </Box>
+                    <List dense>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="アイデア出しの補助" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="デザイン案の自動生成" />
+                      </ListItem>
+                      <ListItem>
+                        <ListItemIcon>
+                          <CheckCircleIcon color="primary" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="コード補完と提案" />
+                      </ListItem>
+                    </List>
+                  </Paper>
+                </Grid>
+              </Grid>
             </CardContent>
           </Card>
         </Grid>

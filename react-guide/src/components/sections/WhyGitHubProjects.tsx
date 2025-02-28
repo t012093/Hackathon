@@ -64,7 +64,7 @@ export const WhyGitHubProjects = () => {
                         <ListItemIcon>
                           <CheckCircleIcon color="primary" fontSize="small" />
                         </ListItemIcon>
-                        <ListItemText primary="段階的な料金プラン" secondary="Team ($4/月～)、Enterprise ($21/月～)。チームプランでは、Codespaces、チームレビューリクエスト、コードオーナーによる保護されたブランチ、複数レビュアー、ドラフトプルリクエストなどの機能が追加されます。" />
+                        <ListItemText primary="充実した無料プラン" secondary="Issueの作成・管理、プロジェクトボード、Wiki、2,000分/月のGitHub Actions、500MB/月のパッケージストレージなど、主要な機能が無料で利用可能です。" />
                       </ListItem>
                       <ListItem>
                         <ListItemIcon>

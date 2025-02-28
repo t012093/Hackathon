@@ -1,4 +1,6 @@
 import { Layout } from './components/Layout';
+import { SlideShowSection } from './components/sections/SlideShowSection';
+import { PersonalProjectManagement } from './components/sections/PersonalManagement';
 import { ToolSetup } from './components/sections/ToolSetup';
 import { ClineSetup } from './components/sections/ClineSetup';
 import { IssueManagement } from './components/sections/IssueManagement';
@@ -40,18 +42,11 @@ function App() {
           transition={{ duration: 0.5 }}
           sx={{ pt: 8 }}
         >
-          <Box mb={6}>
-            <Typography variant="h1" gutterBottom align="center">
-              タスク管理入門
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary">
-              GitHub ProjectsとClineを使った効率的なタスク管理の方法
-            </Typography>
-          </Box>
-
+          <SlideShowSection />
           <WhyGitHubProjects />
           <HackathonGuide />
           <TeamManagement />
+          <PersonalProjectManagement />
           <VisualGuide />
           <PracticalGuide />
           <ClineUsage />

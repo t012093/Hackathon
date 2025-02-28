@@ -34,8 +34,8 @@ export const TroubleshootingGuide = () => {
           title: 'リポジトリにアクセスできない',
           solution: `
             1. リポジトリの権限設定を確認
-            2. 組織のメンバーシップを確認
-            3. SSHキーの設定を確認
+            2. Access Tokenの設定を確認
+            3. 
           `,
         },
       ],
