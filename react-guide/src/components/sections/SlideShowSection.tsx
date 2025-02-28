@@ -37,6 +37,7 @@ interface Feature {
   title: string;
   description: string;
   icon: string;
+  insight?: string;  // 気付きのテキストを追加
 }
 
 interface ProfileItem {
@@ -106,23 +107,184 @@ const slideData: Slide[] = [
   {
     type: 'intro',
     title: "はじめまして",
-    subtitle: "自己紹介",
+    subtitle: "",
     profile: {
-      name: "草野 直弥",
+      name: "naoya kusunoki",
       title: "エンジニア / デザインエンサイアスト",
-      avatar: "/avatar.png",
+      avatar: "/src/assets/images/guide/sanglasscat.png",
       bio: "AIとデザインの融合に興味を持つエンジニアです。新しい技術で、より良いユーザー体験を創造することを目指しています。",
       items: [
-        { label: "専門", value: "フロントエンド開発, UXデザイン" },
-        { label: "趣味", value: "写真撮影, 旅行, 読書" },
-        { label: "連絡先", value: "email@example.com" }
+        { label: "専門", value: "プロンプトエンジニア,3D,フロントエンド " },
+        { label: "趣味", value: "音楽, アート, ネットサーフ" },
+        { label: "連絡先", value: "2005nkg@gmail.com" }
       ]
     }
   },
+  // 新しいエンジニアへの道のりスライドを追加
+  {
+    type: 'feature',
+    title: "エンジニアになるまでの道のり",
+    subtitle: "ChatGPTとの出会いが変えた人生",
+    features: [
+      {
+        title: "プログラミングの挫折 ",
+        description: "プログラミングに興味を持つも、理解の壁にぶつかり挫折。独学の限界を感じていました。",
+        icon: "💔"
+      },
+      {
+        title: "ChatGPTとの出会い",
+        description: "登場したChatGPTで、半年間わからなかった問題が一発で解決。AIが最高の先生になりました。",
+        icon: "💡"
+      },
+      {
+        title: "共に成長する旅",
+        description: "AIとの共同作業で、新しいアイデアが次々と湧き出し、エンジニアリングの楽しさを再発見しました。",
+        icon: "🚀"
+      }
+    ]
+  },
+   // 新しい洞察スライドを追加
+   {
+    type: 'feature',
+    title: "未来のエンジニアリングは指示が全て",
+    subtitle: "コード以上に重要になる思考力と指示力",
+    features: [
+      {
+        title: "アイディアと目標設定が主役に",
+        description: "コードを書くスキルよりも、明確なビジョンと目標を持ち、それを表現できる能力が最も価値のある資質になります。",
+        icon: "💭"
+      },
+      {
+        title: "工程とツールの知識",
+        description: "必要な開発工程と適切なツールを理解していれば、実装の詳細はAIに任せることができ、より上流の設計に集中できます。",
+        icon: "🛠️"
+      },
+      {
+        title: "AIによる効率化の加速",
+        description: "AIが指示自体も最適化し、より良い質問と指示の出し方を提案。人とAIの協力関係がさらに進化していきます。",
+        icon: "⚡"
+      }
+    ]
+  },
+  // 新しいスライド1: AIとのコラボレーションについて
+  {
+    type: 'feature',
+    title: "AIとの共創でアイデアを形に",
+    subtitle: "次世代の発想・計画プロセス",
+    features: [
+      {
+        title: "ブレインストーミングパートナー",
+        description: "アイデア出しに行き詰まったとき、AIが新しい視点や関連するコンセプトを提案。一人でも多様な発想が可能になります。",
+        icon: "🧠"
+      },
+      {
+        title: "目標設定と整理のサポート",
+        description: "アイデアの整理、優先順位付け、目標設定のベストプラクティスをAIと一緒に検討し、構造化された計画に落とし込めます。",
+        icon: "🎯"
+      },
+      {
+        title: "最適な工程とツールの提案",
+        description: "プロジェクトの性質に応じた開発プロセスやツールをAIが提案。経験がなくても最適な選択ができるようになります。",
+        icon: "🧰"
+      }
+    ]
+  },
+  // 新しいスライド2: AIとの関係性について
+  
+  {
+    type: 'feature',
+    title: "AIは最高のパートナー",
+    subtitle: "これからの時代を生き抜く関係性",
+    features: [
+      {
+        title: "相棒としてのAI",
+        description: "常に学習し、あなたの思考スタイルや好みを理解するパートナー。強みを活かし、弱みを補完する関係を構築できます。",
+        icon: "🤝"
+      },
+      {
+        title: "部下としてのAI",
+        description: "詳細な作業を正確に実行し、報告するリソース。適切な指示さえ出せば、複雑なタスクも任せられる関係性になります。",
+        icon: "👥"
+      },
+      {
+        title: "AI理解は生存戦略",
+        description: "AIの特性や限界を理解し、上手に活用できる人材が、これからのデジタル社会で圧倒的な優位性を持ちます。",
+        icon: "🌟"
+      }
+    ]
+  },
+  // 新しいスライド: 在宅ワークの現実
+  {
+    type: 'feature',
+    title: "憧れの在宅ワーク - 現実編",
+    subtitle: "理想と現実のギャップ",
+    features: [
+      {
+        title: "プログラミングの日々",
+        description: "想像していたクリエイティブな仕事とは違い、下流工程での黙々とした作業。パソコンの前で延々とコードを書く日々が続きました。",
+        icon: "💻"
+      },
+      {
+        title: "人間関係の希薄化",
+        description: "在宅ワークで便利な反面、誰とも会話せず過ぎる一日。チームの一体感や仲間との雑談から生まれる発見が減りました。",
+        icon: "🏠"
+      },
+      {
+        title: "健康への影響",
+        description: "運動不足や同じ姿勢での作業による体調不良。通勤がなくなった分、意識して体を動かす必要性を痛感しました。",
+        icon: "🤒"
+      }
+    ]
+  },
+  // 新しいスライド: 本当にやりたいこと
+  {
+    type: 'feature',
+    title: "より大きなインパクトを求めて",
+    subtitle: "本質的な価値創造への旅",
+    features: [
+      {
+        title: "人の役に立つ実感",
+        description: "コードを書いて納品するだけでなく、実際にそれが誰かの生活や仕事をどう改善したのかを直接感じられる仕事がしたいと思うようになりました。",
+        icon: "🤲"
+      },
+      {
+        title: "自問自答の日々",
+        description: "「本当に自分がやりたいことは何だろう？」技術力を高めることだけでなく、それを何のために使うのかという目的を深く考えるようになりました。",
+        icon: "🤔"
+      },
+      {
+        title: "新しい可能性の模索",
+        description: "エンジニアリングスキルと人間的価値の両立。テクノロジーを通じて人々をつなぎ、共に創造できるプラットフォームに可能性を感じています。",
+        icon: "🌱"
+      }
+    ]
+  },
+  {
+    type: 'feature',
+    title: "そうだ、仲間を集めよう",
+    subtitle: "大きな目標設定の自分ごとで仕事に対する意識が変化",
+    features: [
+      {
+        title: "夢のアイデアが現実に",
+        description: "「いつか作りたい」と思っていたプロダクトが、AIの力と仲間との協働で実現可能に。アイデアの実現化のスピードが劇的に向上。",
+        icon: "💫"
+      },
+      {
+        title: "異なる視点の融合",
+        description: "孤独な開発から→多様なバックグラウンドを持つ仲間との議論や共同作業を通じて、新しい発見と学びが増えました。",
+        icon: "🔄"
+      },
+      {
+        title: "地域・社会課題への挑戦",
+        description: "やりがいの大切さを実感。技術力を社会課題の解決に活かすことで、自分の力が社会に貢献している実感を得られるようになりました。",
+        icon: "🌍"
+      }
+    ]
+  },
   {
     type: 'community',
-    title: "クリエイティブコミュニティー",
-    subtitle: "共創で実現する新しい可能性",
+    title: "プロジェクトベースコミュニティー",
+    subtitle: "やりたいことでつながる",
     mission: "エンジニア、クリエイター、アーティスト、起業家、非エンジニア、NPOや投資家とプロジェクトベースでつながり、今までやりたかったことを実現できるコミュニティーを構築しています。",
     members: [
       {
@@ -159,8 +321,8 @@ const slideData: Slide[] = [
   },
   {
     type: 'feature',
-    title: "クリエイティブコミュニティの実現手法",
-    subtitle: "AIを活用したプロジェクト推進",
+    title: "コミュニティープロジェクトの進め方",
+    subtitle: "実際にどうやるのか？",
     features: [
       {
         title: "知的業務の高速化",
@@ -169,7 +331,7 @@ const slideData: Slide[] = [
       },
       {
         title: "創造性の増幅",
-        description: "プロトタイプ作成、コード生成、デザイン案提案など、AIがクリエイティブワークをサポートし、アイデアから実装までの障壁を低減します。",
+        description: "プロトタイプ作成、コード生成、デザイン案提案など、AIがクリエイティブワークをサポート",
         icon: "🚀"
       },
       {
@@ -183,16 +345,16 @@ const slideData: Slide[] = [
    {
     type: 'feature',
     title: "プロジェクト実現のエコシステム",
-    subtitle: "多層的サポート構造による確実な成功へのパス",
+    subtitle: "アイデアの実現までのサポート体制",
     features: [
       {
         title: "仕組みされたガイダンス",
-        description: "アイデア検証、計画策定、実装、スケーリングの各段階に最適化された体系的なワークフローと具体的なマイルストーン設定を提供します。",
+        description: "プロジェクトの進め方や成功の秘訣を体系化したガイドラインで提供し、初心者でもスムーズにプロジェクトを進められるようにします。",
         icon: "🔄"
       },
       {
         title: "専門知識へのアクセス",
-        description: "業界メンターのガイダンス、AIによる文脈に応じた専門情報提供、ドキュメントテンプレート、成功事例の分析を通じて、専門的支援を受けられます。",
+        description: "AIが提供する情報や専門家のアドバイスを活用し、プロジェクトに必要な知識やスキルを補完します。",
         icon: "👥"
       },
       {
@@ -439,36 +601,126 @@ export const SlideShowSection = () => {
             <Box sx={{ textAlign: 'center' }}>
               <Avatar
                 src={slide.profile.avatar}
-                sx={{ width: { xs: 120, md: 180 }, height: { xs: 120, md: 180 }, mx: 'auto', mb: 2, 
-                     border: `4px solid ${theme.palette.primary.main}` }}
+                sx={{ width: { xs: 120, md: 180 }, height: { xs: 120, md: 180 }, mx: 'auto', mb: 2 }}
               >
                 <PersonIcon sx={{ fontSize: 100 }} />
               </Avatar>
-              <Typography variant="h4" sx={{ mb: 1, fontWeight: 'bold' }}>
+              <Typography 
+                variant="h3" 
+                sx={{ 
+                  mb: 1, 
+                  fontWeight: 'bold',
+                  background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
                 {slide.profile.name}
               </Typography>
               <Chip 
                 label={slide.profile.title} 
-                color="primary" 
-                sx={{ mb: 2 }} 
+                sx={{ 
+                  mb: 2,
+                  background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  color: 'white',
+                  fontWeight: 'bold',
+                  '& .MuiChip-label': {
+                    color: 'white'
+                  }
+                }} 
               />
             </Box>
             
             <Box sx={{ flexGrow: 1 }}>
-              <Typography variant="body1" sx={{ mb: 3, fontSize: '1.1rem', fontStyle: 'italic' }}>
-                "{slide.profile.bio}"
-              </Typography>
+              <Paper
+                elevation={2}
+                component={motion.div}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                sx={{ 
+                  p: 3,
+                  mb: 4,
+                  borderRadius: '16px',
+                  background: `linear-gradient(135deg, ${theme.palette.background.paper}, ${theme.palette.background.default})`,
+                  borderLeft: `4px solid ${theme.palette.primary.main}`,
+                  position: 'relative',
+                }}
+              >
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    fontSize: '1.2rem',
+                    fontStyle: 'italic',
+                    lineHeight: 1.8,
+                    color: theme.palette.text.primary,
+                    '&::before': {
+                      content: '"❝"',
+                      position: 'absolute',
+                      top: -10,
+                      left: -10,
+                      fontSize: '2rem',
+                      color: theme.palette.primary.main,
+                      opacity: 0.2,
+                    }
+                  }}
+                >
+                  {slide.profile.bio}
+                </Typography>
+              </Paper>
               
-              <Grid container spacing={2}>
+              <Grid container spacing={3}>
                 {slide.profile.items.map((item, i) => (
                   <Grid item xs={12} key={i}>
-                    <Paper elevation={1} sx={{ p: 1.5, display: 'flex', justifyContent: 'space-between' }}>
-                      <Typography variant="subtitle2" color="text.secondary" sx={{ fontWeight: 'bold' }}>
-                        {item.label}:
-                      </Typography>
-                      <Typography variant="body2">
-                        {item.value}
-                      </Typography>
+                    <Paper
+                      component={motion.div}
+                      whileHover={{ scale: 1.02, boxShadow: theme.shadows[3] }}
+                      elevation={2}
+                      sx={{
+                        p: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 2,
+                        background: `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 2,
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          borderColor: theme.palette.primary.main,
+                        }
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 40,
+                          height: 40,
+                          borderRadius: '12px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                          color: 'white'
+                        }}
+                      >
+                        {i === 0 ? '💻' : i === 1 ? '🎨' : '📧'}
+                      </Box>
+                      <Box sx={{ flexGrow: 1 }}>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{
+                            fontWeight: 'bold',
+                            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            mb: 0.5
+                          }}
+                        >
+                          {item.label}
+                        </Typography>
+                        <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                          {item.value}
+                        </Typography>
+                      </Box>
                     </Paper>
                   </Grid>
                 ))}
@@ -546,19 +798,39 @@ export const SlideShowSection = () => {
                 >
                   {feature.description}
                 </Typography>
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.3 + index * 0.2, duration: 0.5 }}
-                  style={{ alignSelf: 'flex-end', marginTop: 'auto' }}
-                >
-                  <Chip 
-                    label={index === 0 ? "時間効率" : index === 1 ? "品質向上" : "イノベーション"} 
-                    size="small" 
-                    color={index === 0 ? "success" : index === 1 ? "primary" : "secondary"}
-                    sx={{ fontWeight: 'bold' }} 
-                  />
-                </motion.div>
+                {slide.title === "エンジニアになるまでの道のり" && index === 2 && (
+                  <Paper
+                    component={motion.div}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    elevation={2}
+                    sx={{ 
+                      p: 2,
+                      mt: 2,
+                      borderRadius: '8px',
+                      background: `linear-gradient(135deg, ${theme.palette.background.paper}, ${theme.palette.background.default})`,
+                      borderLeft: `4px solid ${theme.palette.secondary.main}`,
+                    }}
+                  >
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        fontStyle: 'italic',
+                        color: theme.palette.text.secondary,
+                        '&::before': {
+                          content: '"そこで気が付いたのは..."',
+                          display: 'block',
+                          fontWeight: 'bold',
+                          color: theme.palette.secondary.main,
+                          mb: 0.5
+                        }
+                      }}
+                    >
+                      これからのエンジニアに求められるのは、コードを書く能力だけでなく、AIと効果的に協働する能力です。
+                    </Typography>
+                  </Paper>
+                )}
               </Paper>
             ))}
           </Box>

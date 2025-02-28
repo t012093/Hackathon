@@ -14,7 +14,11 @@ import {
   StepLabel,
   StepContent,
 } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import GroupsIcon from '@mui/icons-material/Groups';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 import { motion } from 'framer-motion';
+import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import ForumIcon from '@mui/icons-material/Forum';
@@ -29,6 +33,7 @@ import BrushIcon from '@mui/icons-material/Brush';
 import { MermaidDiagram } from '../../components/MermaidDiagram';
 
 export const TeamManagement = () => {
+  // PROJECT SETUP STEPS
   const setupSteps = [
     {
       label: 'プロジェクトの作成',
@@ -43,6 +48,18 @@ export const TeamManagement = () => {
         5. プロジェクト名を入力して作成
       `,
       icon: <AddIcon />,
+      iconColor: '#1976d2', // primary blue
+      bgColor: 'rgba(25, 118, 210, 0.08)',
+      steps: [
+        { type: 'step', text: 'GitHubのリポジトリページを開く' },
+        { type: 'step', text: '"Projects"タブをクリック' },
+        { type: 'step', text: '"New project"ボタンをクリック' },
+        { type: 'step', text: '目的に合わせたテンプレートを選択' },
+        { type: 'option', text: 'Table', desc: 'データ重視の管理に最適' },
+        { type: 'option', text: 'Board', desc: 'カンバン方式の視覚的な管理' },
+        { type: 'option', text: 'Roadmap', desc: '長期的なスケジュール管理' },
+        { type: 'step', text: 'プロジェクト名を入力して作成' },
+      ],
     },
     {
       label: 'チームメンバーの招待',
@@ -56,6 +73,17 @@ export const TeamManagement = () => {
            • Read: 閲覧のみ可能
       `,
       icon: <GroupAddIcon />,
+      iconColor: '#2e7d32', // success green
+      bgColor: 'rgba(46, 125, 50, 0.08)',
+      steps: [
+        { type: 'step', text: 'プロジェクトの"Settings"を開く' },
+        { type: 'step', text: '"Manage access"をクリック' },
+        { type: 'step', text: '"Add collaborators"でメンバーを検索' },
+        { type: 'step', text: '以下の権限レベルを選択して招待' },
+        { type: 'option', text: 'Admin', desc: 'プロジェクト設定の変更が可能', color: 'error' },
+        { type: 'option', text: 'Write', desc: 'タスクの作成・編集が可能', color: 'primary' },
+        { type: 'option', text: 'Read', desc: '閲覧のみ可能', color: 'success' },
+      ],
     },
     {
       label: 'コミュニケーションルールの設定',
@@ -70,12 +98,26 @@ export const TeamManagement = () => {
            • ブロッカーは即座に共有
       `,
       icon: <ForumIcon />,
+      iconColor: '#ed6c02', // warning orange
+      bgColor: 'rgba(237, 108, 2, 0.08)',
+      steps: [
+        { type: 'category', text: '定例ミーティング' },
+        { type: 'option', text: '朝会', desc: '今日の目標確認（10-15分）' },
+        { type: 'option', text: '週次', desc: '進捗確認と計画調整（30-60分）' },
+        { type: 'option', text: '月次', desc: '成果報告と戦略レビュー' },
+        { type: 'category', text: '非同期コミュニケーション' },
+        { type: 'option', text: '重要な決定事項', desc: 'Issueで記録' },
+        { type: 'option', text: 'ステータス更新', desc: '毎日実施' },
+        { type: 'option', text: 'ブロッカー', desc: '即座に共有' },
+      ],
     },
   ];
 
+  // TEAM ROLES AND RESPONSIBILITIES
   const roleTasks = [
     {
       category: 'プロジェクト管理者',
+      description: 'プロジェクト全体の計画と進行を統括し、リソースを最適化する役割',
       tasks: [
         'プロジェクトのゴール設定と共有',
         'タスクの優先順位付けとアサイン',
@@ -83,9 +125,12 @@ export const TeamManagement = () => {
         'チーム間の連携促進',
       ],
       icon: <BusinessIcon />,
+      color: '#0288d1', // blue
+      bgGradient: 'linear-gradient(135deg, rgba(2, 136, 209, 0.15) 0%, rgba(2, 136, 209, 0.05) 100%)',
     },
     {
       category: '制作チーム',
+      description: 'デザインやコンテンツの作成を通して、プロジェクトの具体的な成果物を生み出す',
       tasks: [
         'デザイン/コンテンツの作成',
         'レビュー依頼と修正対応',
@@ -93,9 +138,12 @@ export const TeamManagement = () => {
         '納期管理と進捗報告',
       ],
       icon: <BrushIcon />,
+      color: '#7b1fa2', // purple
+      bgGradient: 'linear-gradient(135deg, rgba(123, 31, 162, 0.15) 0%, rgba(123, 31, 162, 0.05) 100%)',
     },
     {
       category: 'ビジネスチーム',
+      description: 'プロジェクトの事業的側面を担当し、価値創出とステークホルダー管理を行う',
       tasks: [
         '要件定義と仕様確認',
         'スケジュール調整と予算管理',
@@ -103,66 +151,87 @@ export const TeamManagement = () => {
         '成果物の検収と評価',
       ],
       icon: <WorkIcon />,
+      color: '#ed6c02', // orange
+      bgGradient: 'linear-gradient(135deg, rgba(237, 108, 2, 0.15) 0%, rgba(237, 108, 2, 0.05) 100%)',
     },
   ];
 
+  // ISSUE MANAGEMENT TEMPLATES
   const templateTasks = [
     {
       category: 'Issue作成のポイント',
+      description: '効果的なIssueは明確な情報と適切な関連付けにより、チームの共通理解を促進します',
       tasks: [
         '課題と目的を明確に記述',
         'アサインとマイルストーンの設定',
         'ラベルと関連リンクの添付',
       ],
       icon: <AssignmentIcon />,
+      color: '#0277bd', // light blue
+      borderColor: 'rgba(2, 119, 189, 0.3)',
     },
     {
       category: '進捗管理の基本',
+      description: '定期的な状況更新と透明性の確保により、プロジェクトの健全な進行を維持します',
       tasks: [
         '作業開始時にステータスを更新',
         '定期的な進捗報告の実施',
         '課題発生時の早期共有',
       ],
       icon: <InsightsIcon />,
+      color: '#2e7d32', // green
+      borderColor: 'rgba(46, 125, 50, 0.3)',
     },
     {
       category: 'Issue完了の確認',
+      description: '完了基準の明確化と品質確認のプロセスにより、成果物の一貫性を確保します',
       tasks: [
         '成果物の品質チェック実施',
         '関連ドキュメントの更新確認',
         '承認者による最終確認',
       ],
       icon: <TaskIcon />,
+      color: '#c2185b', // pink
+      borderColor: 'rgba(194, 24, 91, 0.3)',
     },
   ];
 
+  // COMMUNICATION TIPS
   const communicationTips = [
     {
       title: 'プロジェクトの可視化',
+      description: 'プロジェクトの全体像と進捗状況を視覚的に共有することで、チーム全体の方向性を統一',
       items: [
         '進捗状況をダッシュボードで共有',
         'マイルストーンの達成状況を明確に',
         'リスクと課題を早期に特定',
       ],
+      icon: <VisibilityIcon />,
+      color: '#0288d1',
     },
     {
       title: 'チーム間連携の促進',
+      description: '部門や役割を越えたコラボレーションを促進し、情報のサイロ化を防止',
       items: [
         '定期的な情報共有の場を設定',
         '部門を越えた協力体制の構築',
         '成功事例と学びの共有',
       ],
+      icon: <GroupsIcon />,
+      color: '#388e3c',
     },
     {
       title: '効果的なフィードバック',
+      description: '建設的かつ具体的なフィードバック文化を醸成し、継続的な改善を実現',
       items: [
         '具体的な改善提案を心がける',
         '成果を適切に評価し共有',
         '建設的な対話の促進',
       ],
+      icon: <FeedbackIcon />,
+      color: '#7b1fa2',
     },
   ];
-
   // Mermaidチャート定義
   const teamStructureChart = `
     flowchart TD
@@ -305,9 +374,20 @@ flowchart LR
             animate={{ opacity: 1, y: 0 }}
           >
             <CardContent>
-              <Typography variant="h5" gutterBottom>
-                プロジェクトセットアップ
-              </Typography>
+            <Typography variant="h5" gutterBottom sx={{ 
+  display: 'flex',
+  alignItems: 'center',
+  background: 'linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%)',
+  p: 1.5,
+  pl: 2,
+  borderRadius: 2,
+  borderLeft: '4px solid #1976d2',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  mb: 3
+}}>
+  <SettingsIcon color="primary" sx={{ mr: 1.5 }} />
+  プロジェクトセットアップ
+</Typography>
               <Stepper orientation="vertical">
                 {setupSteps.map((step) => (
                   <Step key={step.label} active={true}>

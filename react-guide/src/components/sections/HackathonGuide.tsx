@@ -76,35 +76,30 @@ export const HackathonGuide = () => {
     },
   ];
 
-  const schedule = [
+    const schedule = [
     {
-      time: '1日目 19:00-19:15',
+      time: '19:30-19:45',
       title: 'オープニング',
       description: '講座の概要説明、講師紹介、参加者自己紹介',
     },
     {
-      time: '1日目 19:15-20:00',
+      time: '19:45-20:15',
       title: 'GitHub Projectsの基本',
       description: 'GitHub Projectsの基本的な使い方を解説',
     },
     {
-      time: '1日目 20:00-20:30',
-      title: '質疑応答',
-      description: 'GitHub Projectsに関する質問を受け付け',
-    },
-    {
-      time: '2日目 19:00-19:15',
-      title: '前回の復習',
-      description: 'GitHub Projectsの基本的な使い方を復習',
-    },
-    {
-      time: '2日目 19:15-20:00',
+      time: '20:15-20:45',
       title: 'Clineを活用したGitHub Projectsの応用',
       description: 'Clineを活用したGitHub Projectsの効率的な管理方法',
     },
     {
-      time: '2日目 20:00-20:30',
-      title: '質疑応答',
+      time: '20:45-21:15',
+      title: '演習タイム',
+      description: 'GitHub ProjectsとClineを使った実践的な演習',
+    },
+    {
+      time: '21:15-21:30',
+      title: '質疑応答と成果発表',
       description: '演習結果の発表、フィードバック',
     },
   ];
@@ -128,48 +123,7 @@ export const HackathonGuide = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                チーム編成とロール
-              </Typography>
-              <Grid container spacing={3}>
-                {roles.map((role) => (
-                  <Grid item xs={12} md={3} key={role.title}>
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        p: 2,
-                        height: '100%',
-                        transition: 'transform 0.2s',
-                        '&:hover': {
-                          transform: 'translateY(-4px)',
-                        },
-                      }}
-                    >
-                      <Box display="flex" alignItems="center" mb={2}>
-                        {role.icon}
-                        <Typography variant="h6" ml={1}>
-                          {role.title}
-                        </Typography>
-                      </Box>
-                      <Typography color="text.secondary" paragraph>
-                        {role.description}
-                      </Typography>
-                      <List dense>
-                        {role.tasks.map((task) => (
-                          <ListItem key={task}>
-                            <ListItemIcon>
-                              <CheckCircleIcon color="primary" fontSize="small" />
-                            </ListItemIcon>
-                            <ListItemText primary={task} />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </Paper>
-                  </Grid>
-                ))}
-              </Grid>
-            </CardContent>
+       
           </Card>
         </Grid>
 
@@ -359,103 +313,7 @@ export const HackathonGuide = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                評価基準
-              </Typography>
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={4}>
-                  <Paper elevation={3} sx={{ p: 2 }}>
-                    <Box display="flex" alignItems="center" mb={2}>
-                      <EmojiEventsIcon color="primary" />
-                      <Typography variant="h6" ml={1}>
-                        技術面（30点）
-                      </Typography>
-                    </Box>
-                    <List dense>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="Clineの効果的な活用" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="GitHub Projectsの活用度" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="実装の完成度" />
-                      </ListItem>
-                    </List>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Paper elevation={3} sx={{ p: 2 }}>
-                    <Box display="flex" alignItems="center" mb={2}>
-                      <GroupsIcon color="primary" />
-                      <Typography variant="h6" ml={1}>
-                        チーム運営（40点）
-                      </Typography>
-                    </Box>
-                    <List dense>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="タスク管理の適切さ" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="コミュニケーションの円滑さ" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="役割分担の明確さ" />
-                      </ListItem>
-                    </List>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Paper elevation={3} sx={{ p: 2 }}>
-                    <Box display="flex" alignItems="center" mb={2}>
-                      <AssessmentIcon color="primary" />
-                      <Typography variant="h6" ml={1}>
-                        プレゼン（30点）
-                      </Typography>
-                    </Box>
-                    <List dense>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="デモの分かりやすさ" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="発表の明確さ" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="質疑応答の対応" />
-                      </ListItem>
-                    </List>
-                  </Paper>
-                </Grid>
-              </Grid>
-            </CardContent>
+       
           </Card>
         </Grid>
       </Grid>
