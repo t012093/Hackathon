@@ -37,7 +37,10 @@ interface Feature {
   title: string;
   description: string;
   icon: string;
-  insight?: string;  // 気付きのテキストを追加
+  insight?: {
+    title?: string;
+    text: string;
+  };
 }
 
 interface ProfileItem {
@@ -209,7 +212,11 @@ const slideData: Slide[] = [
       {
         title: "AI理解は生存戦略",
         description: "AIの特性や限界を理解し、上手に活用できる人材が、これからのデジタル社会で圧倒的な優位性を持ちます。",
-        icon: "🌟"
+        icon: "🌟",
+        insight: {
+          title: "順調に思われたエンジニアライフだが...",
+          text: "生成AI活用のアイディアが膨らむ一方で、実際に取り組んでいるのは下流工程でパソコンの前での作業が続く。"
+        }
       }
     ]
   },
@@ -453,8 +460,8 @@ const slideData: Slide[] = [
         icon: <PsychologyIcon />
       },
       {
-        area: "医療・健康の進化",
-        impact: "診断精度の向上と治療法の個別最適化。予防医療の強化と医療リソースの効率的配分。",
+        area: "グローバルコラボレーション",
+        impact: "言語や文化の壁を超えた共同作業。多様な視点と知識の統合。",
         icon: <LanguageIcon />
       }
     ]
@@ -798,7 +805,7 @@ export const SlideShowSection = () => {
                 >
                   {feature.description}
                 </Typography>
-                {slide.title === "エンジニアになるまでの道のり" && index === 2 && (
+                {feature.insight && (
                   <Paper
                     component={motion.div}
                     initial={{ opacity: 0, y: 20 }}
@@ -819,7 +826,7 @@ export const SlideShowSection = () => {
                         fontStyle: 'italic',
                         color: theme.palette.text.secondary,
                         '&::before': {
-                          content: '"そこで気が付いたのは..."',
+                          content: `"${feature.insight.title || 'そこで気が付いたのは...'}"`,
                           display: 'block',
                           fontWeight: 'bold',
                           color: theme.palette.secondary.main,
@@ -827,7 +834,7 @@ export const SlideShowSection = () => {
                         }
                       }}
                     >
-                      これからのエンジニアに求められるのは、コードを書く能力だけでなく、AIと効果的に協働する能力です。
+                      {feature.insight.text}
                     </Typography>
                   </Paper>
                 )}

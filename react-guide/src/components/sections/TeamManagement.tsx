@@ -267,93 +267,78 @@ export const TeamManagement = () => {
   `;
 
   const teamWorkflowChart = `
-flowchart LR
-  classDef planNode fill:#e3f2fd,stroke:#1976d2,stroke-width:1px
-  classDef doNode fill:#e8f5e9,stroke:#388e3c,stroke-width:1px
-  classDef checkNode fill:#fff8e1,stroke:#f57c00,stroke-width:1px
-  classDef actNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px
-  
-  Issues[Issues\n課題管理]:::planNode --> Planning[計画\n優先順位付け]:::planNode
-  Planning --> IssueTodo[Issue\nToDo]:::planNode
-  IssueTodo --> InProgress[進行中\n作業追跡]:::doNode
-  InProgress --> Review[レビュー\n品質確認]:::checkNode
-  Review --> Done[完了\n成果確認]:::actNode
-  Done -->|フィードバック| Issues
-  
-  subgraph "GitHub Projects ワークフロー管理"
-    Issues
-    IssueTodo
-    InProgress
-    Review 
-    Done
-  end
-  
-  subgraph "課題発見と管理" 
-    Bug[バグ報告]:::planNode
-    Feature[機能要求]:::planNode
-    Question[質問]:::planNode
+  flowchart TD
+    classDef planNode fill:#e3f2fd,stroke:#1976d2,stroke-width:1px
+    classDef doNode fill:#e8f5e9,stroke:#388e3c,stroke-width:1px
+    classDef checkNode fill:#fff8e1,stroke:#f57c00,stroke-width:1px
+    classDef actNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px
     
-    Issues --- Bug
-    Issues --- Feature
-    Issues --- Question
-  end
-  
-  subgraph "計画・優先順位付け"
-    Milestone[マイルストーン設定]:::planNode
-    Label[ラベル付け]:::planNode
-    Assign[担当者割当]:::planNode
+    Planning[計画\n優先順位付け]:::planNode --> IssueTodo[Issue\nToDo]:::planNode
+    IssueTodo --> InProgress[進行中\n作業追跡]:::doNode
+    InProgress --> Review[レビュー\n品質確認]:::checkNode
+    Review --> Done[完了\n成果確認]:::actNode
+    Done -->|フィードバック| Planning
     
-    Planning --- Milestone
-    Planning --- Label
-    Planning --- Assign
-  end
-  
-  subgraph "進行管理テクニック"
-    Progress1[ステータス更新]:::doNode
-    Progress2[作業量追跡]:::doNode
-    Progress3[ブロッカー表示]:::doNode
+    subgraph MainFlow["GitHub Projects"]
+      direction TB
+      Planning
+      IssueTodo
+      InProgress
+      Review 
+      Done
+    end
     
-    InProgress --- Progress1
-    InProgress --- Progress2
-    InProgress --- Progress3
-  end
-  
-  subgraph "検証・レビュー手法"
-    PR[プルリクエスト連携]:::checkNode
-    Comment[コメント追加]:::checkNode
-    Checklist[チェックリスト]:::checkNode
+    subgraph Plan1["計画・優先順位付け"]
+      direction TB
+      Milestone[マイルストーン設定]:::planNode
+      Label[ラベル付け]:::planNode
+      Assign[担当者割当]:::planNode
+    end
     
-    Review --- PR
-    Review --- Comment
-    Review --- Checklist
-  end
-  
-  subgraph "分析・改善"
-    Completion[完了率分析]:::actNode
-    Burndown[バーンダウン]:::actNode
-    Bottleneck[ボトルネック特定]:::actNode
+    subgraph Issues1["課題発見と管理"]
+      direction TB
+      Bug[バグ報告]:::planNode
+      Feature[機能要求]:::planNode
+      Question[質問]:::planNode
+    end
     
-    Done --- Completion
-    Done --- Burndown
-    Done --- Bottleneck
-  end
-  
-  %% 関連付け線
-  Issues -.->|整理| Planning
-  Planning -.->|優先度| IssueTodo
-  IssueTodo -.->|作業開始| InProgress
-  InProgress -.->|コミット| Review
-  Review -.->|マージ| Done
-  
-  %% スタイル定義
-  style Issues font-weight:bold
-  style Planning font-weight:bold
-  style IssueTodo font-weight:bold
-  style InProgress font-weight:bold
-  style Review font-weight:bold
-  style Done font-weight:bold
-`;
+    subgraph Do1["進行管理テクニック"]
+      direction TB
+      Progress1[ステータス更新]:::doNode
+      Progress2[作業量追跡]:::doNode
+      Progress3[ブロッカー表示]:::doNode
+    end
+    
+    subgraph Check1["検証・レビュー手法"]
+      direction TB
+      PR[プルリクエスト連携]:::checkNode
+      Comment[コメント追加]:::checkNode
+      Checklist[チェックリスト]:::checkNode
+    end
+    
+    subgraph Act1["分析・改善"]
+      direction TB
+      Completion[完了率分析]:::actNode
+      Burndown[バーンダウン]:::actNode
+      Bottleneck[ボトルネック特定]:::actNode
+    end
+    
+    Planning --- Plan1
+    Planning --- Issues1
+    InProgress --- Do1
+    Review --- Check1
+    Done --- Act1
+    
+    %% スタイル定義
+    style Planning font-weight:bold
+    style IssueTodo font-weight:bold
+    style InProgress font-weight:bold
+    style Review font-weight:bold
+    style Done font-weight:bold
 
+    %% レイアウト調整
+    MainFlow:::planNode
+`;
   return (
     <Box component="section" mb={6}>
       <Typography
@@ -698,37 +683,37 @@ flowchart LR
                   GitHub Projectsを活用したチームワークフロー
                 </Typography>
                 <Box sx={{ 
-                  width: '100%', 
-                  maxWidth: '100%',
-                  mx: 'auto',
-                  p: 3,
-                  border: '1px solid #e0e0e0',
-                  borderRadius: 2,
-                  bgcolor: '#fafafa',
-                  height: '600px',
-                  overflow: 'visible'
-                }}>
-                  <MermaidDiagram 
-                    chart={teamWorkflowChart} 
-                    className="mermaid-diagram"
-                    config={{ 
-                      fontSize: 18,
-                      flowchart: {
-                        diagramPadding: 30,
-                        nodeSpacing: 100,
-                        rankSpacing: 120,
-                        curve: 'basis',
-                        htmlLabels: true,
-                        useMaxWidth: false
-                      }
-                    }}
-                    style={{
-                      height: '100%',
-                      minHeight: '550px',
-                      width: '100%'
-                    }}
-                  />
-                </Box>
+  width: '100%', 
+  maxWidth: '100%',
+  mx: 'auto',
+  p: 3,
+  border: '1px solid #e0e0e0',
+  borderRadius: 2,
+  bgcolor: '#fafafa',
+  height: 'auto',
+  minHeight: '600px', // 縦型レイアウト用に高さを増加
+  overflow: 'auto'
+}}>
+  <MermaidDiagram 
+    chart={teamWorkflowChart} 
+    className="mermaid-diagram"
+    config={{ 
+      fontSize: 14, // フォントサイズをさらに小さく
+      flowchart: {
+        diagramPadding: 20,
+        nodeSpacing: 50, // ノード間のスペースを調整
+        rankSpacing: 70, // ランク間のスペースを調整
+        curve: 'basis',
+        htmlLabels: true,
+        useMaxWidth: true
+      }
+    }}
+    style={{
+      height: 'auto',
+      width: '100%'
+    }}
+  />
+</Box>
                 
                 {/* 図の説明を追加 */}
                 <Box sx={{ mt: 3, mx: 'auto', maxWidth: '1000px' }}>
@@ -738,26 +723,27 @@ flowchart LR
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                       <Paper elevation={1} sx={{ p: 2, bgcolor: '#f5f5f5' }}>
-                        <Typography variant="subtitle2" color="primary" gutterBottom>
-                          左から右への流れ
-                        </Typography>
-                        <Typography variant="body2">
-                          Issueから始まり、計画、実装、レビュー、完了という一連の流れで作業が進行します。
-                          各段階で適切なステータス更新とドキュメント化を行うことで、チーム全体の可視性が向上します。
-                        </Typography>
+                      <Typography variant="subtitle2" color="primary" gutterBottom>
+  ワークフロープロセス
+</Typography>
+<Typography variant="body2">
+  計画フェーズから始まり、Issueのステータスに沿って作業が進行します。
+  それぞれの段階に適した管理ツールを活用し、透明性のある進捗管理を実現します。
+  最終的に得られたフィードバックは次のプロセス改善に活かされます。
+</Typography>
                       </Paper>
                     </Grid>
                     <Grid item xs={12} md={6}>
-                      <Paper elevation={1} sx={{ p: 2, bgcolor: '#f5f5f5' }}>
-                        <Typography variant="subtitle2" color="primary" gutterBottom>
-                          フィードバックループ
-                        </Typography>
-                        <Typography variant="body2">
-                          完了したタスクからのフィードバックが新たなIssueとして取り込まれる循環的なプロセスを
-                          実現することで、継続的な改善が可能になります。
-                        </Typography>
-                      </Paper>
-                    </Grid>
+  <Paper elevation={1} sx={{ p: 2, bgcolor: '#f5f5f5' }}>
+    <Typography variant="subtitle2" color="primary" gutterBottom>
+      上から下への流れ
+    </Typography>
+    <Typography variant="body2">
+      計画から始まり、ToDo、実装、レビュー、完了という一連の流れで作業が進行します。
+      各段階で適切なステータス更新とドキュメント化を行うことで、チーム全体の可視性が向上します。
+    </Typography>
+  </Paper>
+</Grid>
                   </Grid>
                 </Box>
               </Box>
@@ -870,35 +856,7 @@ flowchart LR
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                効果的なプロジェクト運営
-              </Typography>
-              <Grid container spacing={3}>
-                {communicationTips.map((tip) => (
-                  <Grid item xs={12} md={4} key={tip.title}>
-                    <Paper elevation={3} sx={{ p: 2 }}>
-                      <Box display="flex" alignItems="center" mb={2}>
-                        <ChatIcon color="primary" />
-                        <Typography variant="h6" ml={1}>
-                          {tip.title}
-                        </Typography>
-                      </Box>
-                      <List dense>
-                        {tip.items.map((item) => (
-                          <ListItem key={item}>
-                            <ListItemIcon>
-                              <CheckCircleIcon color="primary" fontSize="small" />
-                            </ListItemIcon>
-                            <ListItemText primary={item} />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </Paper>
-                  </Grid>
-                ))}
-              </Grid>
-            </CardContent>
+
           </Card>
         </Grid>
       </Grid>

@@ -302,7 +302,7 @@ export const VisualGuide = () => {
                       src={item.image}
                       alt={item.title}
                       sx={{
-                        width: '100%',
+                        width: '80%',
                         height: 'auto',
                         borderRadius: 1,
                         mb: 3,
@@ -332,17 +332,17 @@ export const VisualGuide = () => {
                     color="text.secondary"
                     sx={{ 
                       whiteSpace: 'pre-line',
-                      fontSize: '1.1rem',
-                      lineHeight: 1.5,
+                      fontSize: '1rem',
+                      lineHeight: 1,
                       '& h3': {
-                        fontSize: '1.2rem',
+                        fontSize: '1rem',
                         fontWeight: 'bold',
                         color: 'text.primary',
-                        marginBottom: '8px',
-                        marginTop: '12px'
+                        marginBottom: '5px',
+                        marginTop: '5px'
                       },
                       '& div': {
-                        marginBottom: '12px'
+                        marginBottom: '5px'
                       },
                       '& strong': {
                         color: 'text.primary'

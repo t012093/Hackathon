@@ -344,35 +344,7 @@ import BuildIcon from '@mui/icons-material/Build';
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <CardContent>
-                <Typography variant="h5" gutterBottom>
-                  パーソナル生産性向上のヒント
-                </Typography>
-                <Grid container spacing={3}>
-                  {productivityTips.map((tip) => (
-                    <Grid item xs={12} md={4} key={tip.title}>
-                      <Paper elevation={3} sx={{ p: 2 }}>
-                        <Box display="flex" alignItems="center" mb={2}>
-                          <AutoAwesomeIcon color="primary" />
-                          <Typography variant="h6" ml={1}>
-                            {tip.title}
-                          </Typography>
-                        </Box>
-                        <List dense>
-                          {tip.items.map((item) => (
-                            <ListItem key={item}>
-                              <ListItemIcon>
-                                <CheckCircleIcon color="primary" fontSize="small" />
-                              </ListItemIcon>
-                              <ListItemText primary={item} />
-                            </ListItem>
-                          ))}
-                        </List>
-                      </Paper>
-                    </Grid>
-                  ))}
-                </Grid>
-              </CardContent>
+           
             </Card>
           </Grid>
   
