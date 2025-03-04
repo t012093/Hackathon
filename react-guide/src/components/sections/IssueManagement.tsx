@@ -11,6 +11,7 @@ import {
   Button,
   TextField,
   IconButton,
+  useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -44,6 +45,7 @@ const TabPanel = (props: TabPanelProps) => {
 
 const CommandBox = ({ command }: { command: string }) => {
   const [copied, setCopied] = useState(false);
+  const theme = useTheme();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(command);
@@ -61,6 +63,7 @@ const CommandBox = ({ command }: { command: string }) => {
         fontFamily: 'monospace',
         position: 'relative',
         mb: 2,
+        border: `1px solid ${theme.palette.primary.main}20`,
       }}
     >
       <Typography variant="body2" component="code">
@@ -73,7 +76,7 @@ const CommandBox = ({ command }: { command: string }) => {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: copied ? 'success.main' : 'grey.100',
+          color: copied ? 'primary.main' : 'grey.100',
         }}
       >
         {copied ? <DoneIcon /> : <ContentCopyIcon />}
@@ -84,6 +87,7 @@ const CommandBox = ({ command }: { command: string }) => {
 
 export const IssueManagement = () => {
   const [tabValue, setTabValue] = useState(0);
+  const theme = useTheme();
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -97,12 +101,32 @@ export const IssueManagement = () => {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         mb={4}
+        sx={{
+          color: 'primary.main',
+          borderBottom: `2px solid ${theme.palette.primary.main}20`,
+          pb: 1,
+        }}
       >
         Issue管理とプロジェクトボード
       </Typography>
 
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={tabValue} onChange={handleTabChange} aria-label="issue management tabs">
+      <Box sx={{ borderBottom: 1, borderColor: 'primary.light' }}>
+        <Tabs 
+          value={tabValue} 
+          onChange={handleTabChange} 
+          aria-label="issue management tabs"
+          sx={{
+            '& .MuiTab-root': {
+              color: 'text.secondary',
+              '&.Mui-selected': {
+                color: 'primary.main',
+              },
+            },
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'primary.main',
+            },
+          }}
+        >
           <Tab icon={<TaskIcon />} label="Issue作成" />
           <Tab icon={<LocalOfferIcon />} label="ラベル管理" />
           <Tab icon={<AssignmentIcon />} label="プロジェクトボード" />
@@ -112,9 +136,17 @@ export const IssueManagement = () => {
       <TabPanel value={tabValue} index={0}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card
+              sx={{
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+              }}
+            >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   CLIでIssueを作成
                 </Typography>
                 <CommandBox command="gh issue create --title 'タスクのタイトル' --body '詳細な説明' --label 'bug' --assignee '@me'" />
@@ -129,9 +161,17 @@ export const IssueManagement = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card
+              sx={{
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+              }}
+            >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   Issue操作コマンド
                 </Typography>
                 <CommandBox command="gh issue list --state open --label bug --assignee @me" />
@@ -151,9 +191,17 @@ export const IssueManagement = () => {
       <TabPanel value={tabValue} index={1}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card
+              sx={{
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+              }}
+            >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   ラベルの作成と管理
                 </Typography>
                 <Box display="flex" gap={1} flexWrap="wrap" mb={2}>
@@ -170,9 +218,17 @@ export const IssueManagement = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card>
+            <Card
+              sx={{
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                  transform: 'translateY(-2px)',
+                },
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+              }}
+            >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   ラベル操作
                 </Typography>
                 <CommandBox command="gh label list" />
@@ -195,18 +251,24 @@ export const IssueManagement = () => {
             <Card
               component={motion.div}
               whileHover={{ y: -4 }}
-              sx={{ height: '100%' }}
+              sx={{
+                height: '100%',
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                },
+              }}
             >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   ToDo
                 </Typography>
                 <Box
                   sx={{
-                    backgroundColor: 'grey.100',
+                    backgroundColor: (theme) => theme.palette.background.default,
                     p: 2,
                     borderRadius: 1,
                     minHeight: 200,
+                    border: `1px dashed ${theme.palette.primary.main}20`,
                   }}
                 >
                   <Typography variant="body2" color="text.secondary">
@@ -220,18 +282,24 @@ export const IssueManagement = () => {
             <Card
               component={motion.div}
               whileHover={{ y: -4 }}
-              sx={{ height: '100%' }}
+              sx={{
+                height: '100%',
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                },
+              }}
             >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   進行中
                 </Typography>
                 <Box
                   sx={{
-                    backgroundColor: 'grey.100',
+                    backgroundColor: (theme) => theme.palette.background.default,
                     p: 2,
                     borderRadius: 1,
                     minHeight: 200,
+                    border: `1px dashed ${theme.palette.primary.main}20`,
                   }}
                 />
               </CardContent>
@@ -241,18 +309,24 @@ export const IssueManagement = () => {
             <Card
               component={motion.div}
               whileHover={{ y: -4 }}
-              sx={{ height: '100%' }}
+              sx={{
+                height: '100%',
+                '&:hover': {
+                  boxShadow: `0 4px 20px ${theme.palette.primary.main}20`,
+                },
+              }}
             >
               <CardContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom color="primary">
                   完了
                 </Typography>
                 <Box
                   sx={{
-                    backgroundColor: 'grey.100',
+                    backgroundColor: (theme) => theme.palette.background.default,
                     p: 2,
                     borderRadius: 1,
                     minHeight: 200,
+                    border: `1px dashed ${theme.palette.primary.main}20`,
                   }}
                 />
               </CardContent>
@@ -261,7 +335,16 @@ export const IssueManagement = () => {
         </Grid>
 
         <Box mt={4}>
-          <Typography variant="h6" gutterBottom>
+          <Typography 
+            variant="h6" 
+            gutterBottom 
+            sx={{
+              color: 'primary.main',
+              borderLeft: '4px solid',
+              borderLeftColor: 'primary.main',
+              pl: 2,
+            }}
+          >
             プロジェクトボード操作
           </Typography>
           <CommandBox command="gh project create 'プロジェクト名' --body '説明文'" />
