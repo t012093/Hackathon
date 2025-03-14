@@ -27,9 +27,6 @@ import InsightsIcon from '@mui/icons-material/Insights';
 import TaskIcon from '@mui/icons-material/Task';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ChatIcon from '@mui/icons-material/Chat';
-import WorkIcon from '@mui/icons-material/Work';
-import BusinessIcon from '@mui/icons-material/Business';
-import BrushIcon from '@mui/icons-material/Brush';
 import { MermaidDiagram } from '../../components/MermaidDiagram';
 
 export const TeamManagement = () => {
@@ -113,49 +110,6 @@ export const TeamManagement = () => {
     },
   ];
 
-  // TEAM ROLES AND RESPONSIBILITIES
-  const roleTasks = [
-    {
-      category: 'プロジェクト管理者',
-      description: 'プロジェクト全体の計画と進行を統括し、リソースを最適化する役割',
-      tasks: [
-        'プロジェクトのゴール設定と共有',
-        'タスクの優先順位付けとアサイン',
-        '進捗モニタリングとリスク管理',
-        'チーム間の連携促進',
-      ],
-      icon: <BusinessIcon />,
-      color: '#0288d1', // blue
-      bgGradient: 'linear-gradient(135deg, rgba(2, 136, 209, 0.15) 0%, rgba(2, 136, 209, 0.05) 100%)',
-    },
-    {
-      category: '制作チーム',
-      description: 'デザインやコンテンツの作成を通して、プロジェクトの具体的な成果物を生み出す',
-      tasks: [
-        'デザイン/コンテンツの作成',
-        'レビュー依頼と修正対応',
-        '品質基準の遵守',
-        '納期管理と進捗報告',
-      ],
-      icon: <BrushIcon />,
-      color: '#7b1fa2', // purple
-      bgGradient: 'linear-gradient(135deg, rgba(123, 31, 162, 0.15) 0%, rgba(123, 31, 162, 0.05) 100%)',
-    },
-    {
-      category: 'ビジネスチーム',
-      description: 'プロジェクトの事業的側面を担当し、価値創出とステークホルダー管理を行う',
-      tasks: [
-        '要件定義と仕様確認',
-        'スケジュール調整と予算管理',
-        'ステークホルダーとの調整',
-        '成果物の検収と評価',
-      ],
-      icon: <WorkIcon />,
-      color: '#ed6c02', // orange
-      bgGradient: 'linear-gradient(135deg, rgba(237, 108, 2, 0.15) 0%, rgba(237, 108, 2, 0.05) 100%)',
-    },
-  ];
-
   // ISSUE MANAGEMENT TEMPLATES
   const templateTasks = [
     {
@@ -232,6 +186,7 @@ export const TeamManagement = () => {
       color: '#7b1fa2',
     },
   ];
+
   // Mermaidチャート定義
   const teamStructureChart = `
     flowchart TD
@@ -273,10 +228,10 @@ export const TeamManagement = () => {
     classDef checkNode fill:#fff8e1,stroke:#f57c00,stroke-width:1px
     classDef actNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px
     
-    Planning[計画\n優先順位付け]:::planNode --> IssueTodo[Issue\nToDo]:::planNode
-    IssueTodo --> InProgress[進行中\n作業追跡]:::doNode
-    InProgress --> Review[レビュー\n品質確認]:::checkNode
-    Review --> Done[完了\n成果確認]:::actNode
+    Planning[計画\\n優先順位付け]:::planNode --> IssueTodo[Issue\\nToDo]:::planNode
+    IssueTodo --> InProgress[進行中\\n作業追跡]:::doNode
+    InProgress --> Review[レビュー\\n品質確認]:::checkNode
+    Review --> Done[完了\\n成果確認]:::actNode
     Done -->|フィードバック| Planning
     
     subgraph MainFlow["GitHub Projects"]
@@ -338,7 +293,8 @@ export const TeamManagement = () => {
 
     %% レイアウト調整
     MainFlow:::planNode
-`;
+  `;
+
   return (
     <Box component="section" mb={6}>
       <Typography
@@ -359,20 +315,20 @@ export const TeamManagement = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <CardContent>
-            <Typography variant="h5" gutterBottom sx={{ 
-  display: 'flex',
-  alignItems: 'center',
-  background: 'linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%)',
-  p: 1.5,
-  pl: 2,
-  borderRadius: 2,
-  borderLeft: '4px solid #1976d2',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-  mb: 3
-}}>
-  <SettingsIcon color="primary" sx={{ mr: 1.5 }} />
-  プロジェクトセットアップ
-</Typography>
+              <Typography variant="h5" gutterBottom sx={{ 
+                display: 'flex',
+                alignItems: 'center',
+                background: 'linear-gradient(90deg, #f0f7ff 0%, #ffffff 100%)',
+                p: 1.5,
+                pl: 2,
+                borderRadius: 2,
+                borderLeft: '4px solid #1976d2',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                mb: 3
+              }}>
+                <SettingsIcon color="primary" sx={{ mr: 1.5 }} />
+                プロジェクトセットアップ
+              </Typography>
               <Stepper orientation="vertical">
                 {setupSteps.map((step) => (
                   <Step key={step.label} active={true}>
@@ -385,417 +341,6 @@ export const TeamManagement = () => {
                   </Step>
                 ))}
               </Stepper>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Card
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                効率的なチームコラボレーション
-              </Typography>
-              <Typography variant="body2" color="text.secondary" paragraph>
-                GitHub Projectsは、Issueを中心としたコミュニケーションと情報共有により、
-                チーム間の協働を効率化します。Issue管理とタスクの流れを一元化することで、
-                プロジェクトの透明性と追跡性を高めることができます。
-              </Typography>
-              <Box
-                component="img"
-                src="/src/assets/images/guide/project-grouping.svg"
-                alt="GitHub Projectsのグルーピング機能を活用したプロジェクト管理"
-                sx={{
-                  width: '100%',
-                  maxWidth: 800,
-                  height: 'auto',
-                  my: 2,
-                  display: 'block',
-                  mx: 'auto'
-                }}
-              />
-              <Grid container spacing={3} sx={{ mt: 2 }}>
-                <Grid item xs={12} md={4}>
-                  <Paper elevation={3} sx={{ p: 2 }}>
-                    <Typography variant="h6" gutterBottom>
-                      カスタムフィールドの活用
-                    </Typography>
-                    <List dense>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="チーム/部門を示すフィールド作成" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="ラベルによる色分け表示" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="優先度や進捗状況の管理" />
-                      </ListItem>
-                    </List>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Paper elevation={3} sx={{ p: 2 }}>
-                    <Typography variant="h6" gutterBottom>
-                      ビューの使い分け
-                    </Typography>
-                    <List dense>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="チーム別のフィルタリング" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="ボード/テーブル形式の切替" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="マイルストーン別の進捗表示" />
-                      </ListItem>
-                    </List>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Paper elevation={3} sx={{ p: 2 }}>
-                    <Typography variant="h6" gutterBottom>
-                      グルーピング機能
-                    </Typography>
-                    <List dense>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="チーム別のグループ化" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="状態×チームのマトリックス表示" />
-                      </ListItem>
-                      <ListItem>
-                        <ListItemIcon>
-                          <CheckCircleIcon color="primary" fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="優先度に基づく整理" />
-                      </ListItem>
-                    </List>
-                  </Paper>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Card
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                柔軟なプロジェクト管理構造
-              </Typography>
-              <Typography variant="body2" color="text.secondary" paragraph>
-                GitHub Projectsは、様々な部門やロールに対応できる柔軟な管理構造を提供します。
-                組織の規模や目的に合わせて、最適なプロジェクト管理アプローチを選択できます。
-              </Typography>
-              
-              {/* 構造比較表 */}
-              <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
-                <Typography variant="h6" gutterBottom>
-                  組織規模・目的別の推奨管理構造
-                </Typography>
-                <Grid container spacing={2} sx={{ mt: 2 }}>
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ border: '1px solid #e0e0e0', borderRadius: 1, p: 2, height: '100%' }}>
-                      <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                        小規模チーム (5-10名)
-                      </Typography>
-                      <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">単一プロジェクトボード</Typography>
-                      </Box>
-                      <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">シンプルなカンバン方式</Typography>
-                      </Box>
-                      <Box display="flex" alignItems="center">
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">担当者ベースの振り分け</Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ border: '1px solid #e0e0e0', borderRadius: 1, p: 2, height: '100%' }}>
-                      <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                        中規模チーム (10-30名)
-                      </Typography>
-                      <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">機能/部署別のビュー作成</Typography>
-                      </Box>
-                      <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">カスタムフィールドでの分類</Typography>
-                      </Box>
-                      <Box display="flex" alignItems="center">
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">イテレーション単位の管理</Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                  
-                  <Grid item xs={12} md={4}>
-                    <Box sx={{ border: '1px solid #e0e0e0', borderRadius: 1, p: 2, height: '100%' }}>
-                      <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                        大規模組織 (30名以上)
-                      </Typography>
-                      <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">複数プロジェクトの連携</Typography>
-                      </Box>
-                      <Box display="flex" alignItems="center" sx={{ mb: 1 }}>
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">階層化されたマイルストーン</Typography>
-                      </Box>
-                      <Box display="flex" alignItems="center">
-                        <CheckCircleIcon color="success" fontSize="small" sx={{ mr: 1 }} />
-                        <Typography variant="body2">部門横断の統合ダッシュボード</Typography>
-                      </Box>
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Paper>
-
-              {/* 主要図解 */}
-              <Box sx={{ position: 'relative', my: 6, pb: 4 }}>
-                <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
-                  チーム構成と管理フローの例
-                </Typography>
-                <Box sx={{ 
-                  width: '100%', 
-                  maxWidth: '100%',
-                  mx: 'auto',
-                  p: 3,
-                  border: '1px solid #e0e0e0',
-                  borderRadius: 2,
-                  bgcolor: '#fafafa',
-                  height: '600px',
-                  overflow: 'visible'
-                }}>
-                  <MermaidDiagram 
-                    chart={teamStructureChart} 
-                    className="mermaid-diagram"
-                    config={{ 
-                      fontSize: 18,
-                      flowchart: {
-                        diagramPadding: 30,
-                        nodeSpacing: 100,
-                        rankSpacing: 120,
-                        curve: 'basis',
-                        htmlLabels: true,
-                        useMaxWidth: false
-                      }
-                    }}
-                    style={{
-                      height: '100%',
-                      minHeight: '550px',
-                      width: '100%'
-                    }}
-                  />
-                </Box>
-
-                {/* 図解補助説明 */}
-                <Box sx={{ mt: 3, mx: 'auto', maxWidth: 800 }}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={4}>
-                      <Paper elevation={1} sx={{ p: 1.5, bgcolor: '#f5f5f5' }}>
-                        <Typography variant="subtitle2" color="primary">
-                          トップダウン構造
-                        </Typography>
-                        <Typography variant="body2">
-                          経営層・リーダーから実行チームへの明確な指示系統。
-                          ビジョンや戦略的方向性に基づくタスク管理に最適。
-                        </Typography>
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <Paper elevation={1} sx={{ p: 1.5, bgcolor: '#f5f5f5' }}>
-                        <Typography variant="subtitle2" color="primary">
-                          マトリックス構造
-                        </Typography>
-                        <Typography variant="body2">
-                          機能横断的なチーム編成と部門別管理の両立。
-                          多様なスキルセットが必要なプロジェクトに効果的。
-                        </Typography>
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <Paper elevation={1} sx={{ p: 1.5, bgcolor: '#f5f5f5' }}>
-                        <Typography variant="subtitle2" color="primary">
-                          アジャイル/スクラム構造
-                        </Typography>
-                        <Typography variant="body2">
-                          自律的な小チームによる反復開発と頻繁なフィードバック。
-                          柔軟な対応と継続的改善が求められる場面に最適。
-                        </Typography>
-                      </Paper>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Box>
-
-              <Typography variant="body2" paragraph>
-                このように、GitHub Projectsは従来のエンジニアリングチームだけでなく、
-                様々な部門やロールのチームメンバーが効率的に協働できる環境を提供します。
-                組織の成長に合わせて管理構造を柔軟に進化させることも可能です。
-              </Typography>
-              
-              <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
-                効率的なチームコラボレーション
-              </Typography>
-              <Typography variant="body2" color="text.secondary" paragraph>
-                GitHub Projectsは、様々なチーム間のコミュニケーションと情報共有を円滑にします。
-                以下の図は、異なるチーム間でのコラボレーションの仕組みを示しています。
-              </Typography>
-              <Box sx={{ position: 'relative', my: 6, pb: 4 }}>
-                <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
-                  GitHub Projectsを活用したチームワークフロー
-                </Typography>
-                <Box sx={{ 
-  width: '100%', 
-  maxWidth: '100%',
-  mx: 'auto',
-  p: 3,
-  border: '1px solid #e0e0e0',
-  borderRadius: 2,
-  bgcolor: '#fafafa',
-  height: 'auto',
-  minHeight: '600px', // 縦型レイアウト用に高さを増加
-  overflow: 'auto'
-}}>
-  <MermaidDiagram 
-    chart={teamWorkflowChart} 
-    className="mermaid-diagram"
-    config={{ 
-      fontSize: 14, // フォントサイズをさらに小さく
-      flowchart: {
-        diagramPadding: 20,
-        nodeSpacing: 50, // ノード間のスペースを調整
-        rankSpacing: 70, // ランク間のスペースを調整
-        curve: 'basis',
-        htmlLabels: true,
-        useMaxWidth: true
-      }
-    }}
-    style={{
-      height: 'auto',
-      width: '100%'
-    }}
-  />
-</Box>
-                
-                {/* 図の説明を追加 */}
-                <Box sx={{ mt: 3, mx: 'auto', maxWidth: '1000px' }}>
-                  <Typography variant="body1" paragraph sx={{ fontWeight: 'medium' }}>
-                    上図は GitHub Projects を使ったチーム協働のワークフローを示しています。
-                  </Typography>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
-                      <Paper elevation={1} sx={{ p: 2, bgcolor: '#f5f5f5' }}>
-                      <Typography variant="subtitle2" color="primary" gutterBottom>
-  ワークフロープロセス
-</Typography>
-<Typography variant="body2">
-  計画フェーズから始まり、Issueのステータスに沿って作業が進行します。
-  それぞれの段階に適した管理ツールを活用し、透明性のある進捗管理を実現します。
-  最終的に得られたフィードバックは次のプロセス改善に活かされます。
-</Typography>
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
-  <Paper elevation={1} sx={{ p: 2, bgcolor: '#f5f5f5' }}>
-    <Typography variant="subtitle2" color="primary" gutterBottom>
-      上から下への流れ
-    </Typography>
-    <Typography variant="body2">
-      計画から始まり、ToDo、実装、レビュー、完了という一連の流れで作業が進行します。
-      各段階で適切なステータス更新とドキュメント化を行うことで、チーム全体の可視性が向上します。
-    </Typography>
-  </Paper>
-</Grid>
-                  </Grid>
-                </Box>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Card
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                チーム別の役割と責任
-              </Typography>
-              <Grid container spacing={3}>
-                {roleTasks.map((role) => (
-                  <Grid item xs={12} md={4} key={role.category}>
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        p: 2,
-                        height: '100%',
-                        transition: 'transform 0.2s',
-                        '&:hover': {
-                          transform: 'translateY(-4px)',
-                        },
-                      }}
-                    >
-                      <Box display="flex" alignItems="center" mb={2}>
-                        {role.icon}
-                        <Typography variant="h6" ml={1}>
-                          {role.category}
-                        </Typography>
-                      </Box>
-                      <List dense>
-                        {role.tasks.map((task) => (
-                          <ListItem key={task}>
-                            <ListItemIcon>
-                              <CheckCircleIcon color="primary" fontSize="small" />
-                            </ListItemIcon>
-                            <ListItemText primary={task} />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </Paper>
-                  </Grid>
-                ))}
-              </Grid>
             </CardContent>
           </Card>
         </Grid>
@@ -849,6 +394,7 @@ export const TeamManagement = () => {
           </Card>
         </Grid>
 
+        {/* コミュニケーション Tips セクション */}
         <Grid item xs={12}>
           <Card
             component={motion.div}
@@ -856,7 +402,48 @@ export const TeamManagement = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-
+            <CardContent>
+              <Typography variant="h5" gutterBottom>
+                コミュニケーション Tips
+              </Typography>
+              <Grid container spacing={3}>
+                {communicationTips.map((tip) => (
+                  <Grid item xs={12} md={4} key={tip.title}>
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        p: 2,
+                        height: '100%',
+                        transition: 'transform 0.2s',
+                        '&:hover': {
+                          transform: 'translateY(-4px)',
+                        },
+                      }}
+                    >
+                      <Box display="flex" alignItems="center" mb={2}>
+                        {tip.icon}
+                        <Typography variant="h6" ml={1}>
+                          {tip.title}
+                        </Typography>
+                      </Box>
+                      <Typography variant="body2" color="text.secondary" paragraph>
+                        {tip.description}
+                      </Typography>
+                      <List dense>
+                        {tip.items.map((item) => (
+                          <ListItem key={item}>
+                            <ListItemIcon>
+                              <CheckCircleIcon color="primary" fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary={item} />
+                          </ListItem>
+                        ))}
+                      </List>
+                    </Paper>
+                  </Grid>
+                ))}
+              </Grid>
+            </CardContent>
           </Card>
         </Grid>
       </Grid>

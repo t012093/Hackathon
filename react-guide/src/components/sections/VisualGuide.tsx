@@ -6,16 +6,23 @@ import {
   Grid,
   Paper,
   IconButton,
+  Tabs,
+  Tab,
+  TextField,
+  InputAdornment,
 } from '@mui/material';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import SearchIcon from '@mui/icons-material/Search';
 import { ImageDialog } from '../ImageDialog';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ImageIcon from '@mui/icons-material/Image';
 
 export const VisualGuide = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState(0);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   const handleImageClick = (index: number) => {
     setCurrentImageIndex(index);
@@ -259,6 +266,18 @@ export const VisualGuide = () => {
     },
   ];
 
+  // タブごとにグループ化
+  const tabGroups = [
+    { label: "プロジェクト設定", items: guideImages.slice(0, 3) },
+    { label: "タスク管理", items: guideImages.slice(3, 6) },
+    { label: "チーム連携", items: guideImages.slice(6) }
+  ];
+
+  const filteredItems = tabGroups[activeTab].items.filter(item =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <Box component="section" mb={6}>
       <Typography
@@ -277,83 +296,120 @@ export const VisualGuide = () => {
         animate={{ opacity: 1, y: 0 }}
       >
         <CardContent>
-          <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
-            <ImageIcon sx={{ mr: 1 }} />
-            操作手順の詳細
-          </Typography>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
+            <Tabs
+              value={activeTab}
+              onChange={(_, newValue) => setActiveTab(newValue)}
+              variant="scrollable"
+              scrollButtons="auto"
+            >
+              {tabGroups.map((group, index) => (
+                <Tab key={index} label={group.label} />
+              ))}
+            </Tabs>
+          </Box>
 
-          <Grid container spacing={4}>
-            {guideImages.map((item, index) => (
-              <Grid item xs={12} key={item.title}>
-                <Paper
-                  elevation={3}
-                  component={motion.div}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  sx={{ p: 3, height: '100%' }}
-                >
-                  <Typography variant="h6" gutterBottom>
-                    {item.title}
-                  </Typography>
-                  <Box sx={{ position: 'relative' }}>
-                    <Box
-                      component="img"
-                      src={item.image}
-                      alt={item.title}
-                      sx={{
-                        width: '80%',
-                        height: 'auto',
-                        borderRadius: 1,
-                        mb: 3,
-                        boxShadow: 3,
-                        cursor: 'pointer',
-                      }}
-                      onClick={() => handleImageClick(index)}
-                    />
-                    <IconButton
-                      sx={{
-                        position: 'absolute',
-                        right: 8,
-                        top: 8,
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                        color: 'white',
+          <Box sx={{ mb: 3 }}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              placeholder="ガイドを検索..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Box>
+
+          <AnimatePresence mode="wait">
+            <Grid container spacing={4}>
+              {filteredItems.map((item, index) => (
+                <Grid item xs={12} md={6} lg={4} key={item.title}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Paper
+                      elevation={3}
+                      sx={{ 
+                        p: 3, 
+                        height: '100%',
+                        transition: 'transform 0.2s',
                         '&:hover': {
-                          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        },
+                          transform: 'translateY(-4px)',
+                        }
                       }}
-                      onClick={() => handleImageClick(index)}
                     >
-                      <ZoomInIcon />
-                    </IconButton>
-                  </Box>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{ 
-                      whiteSpace: 'pre-line',
-                      fontSize: '1rem',
-                      lineHeight: 1,
-                      '& h3': {
-                        fontSize: '1rem',
-                        fontWeight: 'bold',
-                        color: 'text.primary',
-                        marginBottom: '5px',
-                        marginTop: '5px'
-                      },
-                      '& div': {
-                        marginBottom: '5px'
-                      },
-                      '& strong': {
-                        color: 'text.primary'
-                      }
-                    }}
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
+                      <Typography variant="h6" gutterBottom>
+                        {item.title}
+                      </Typography>
+                      <Box sx={{ position: 'relative' }}>
+                        <Box
+                          component="img"
+                          src={item.image}
+                          alt={item.title}
+                          sx={{
+                            width: '80%',
+                            height: 'auto',
+                            borderRadius: 1,
+                            mb: 3,
+                            boxShadow: 3,
+                            cursor: 'pointer',
+                          }}
+                          onClick={() => handleImageClick(index)}
+                        />
+                        <IconButton
+                          sx={{
+                            position: 'absolute',
+                            right: 8,
+                            top: 8,
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                            color: 'white',
+                            '&:hover': {
+                              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                            },
+                          }}
+                          onClick={() => handleImageClick(index)}
+                        >
+                          <ZoomInIcon />
+                        </IconButton>
+                      </Box>
+                      <Typography
+                        variant="body1"
+                        color="text.secondary"
+                        sx={{ 
+                          whiteSpace: 'pre-line',
+                          fontSize: '1rem',
+                          lineHeight: 1,
+                          '& h3': {
+                            fontSize: '1rem',
+                            fontWeight: 'bold',
+                            color: 'text.primary',
+                            marginBottom: '5px',
+                            marginTop: '5px'
+                          },
+                          '& div': {
+                            marginBottom: '5px'
+                          },
+                          '& strong': {
+                            color: 'text.primary'
+                          }
+                        }}
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      />
+                    </Paper>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </AnimatePresence>
         </CardContent>
       </Card>
 

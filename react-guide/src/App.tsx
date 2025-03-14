@@ -3,11 +3,9 @@ import { SlideShowSection } from './components/sections/SlideShowSection';
 import { PersonalProjectManagement } from './components/sections/PersonalManagement';
 import { ToolSetup } from './components/sections/ToolSetup';
 import { ClineSetup } from './components/sections/ClineSetup';
-import { IssueManagement } from './components/sections/IssueManagement';
 import { HackathonGuide } from './components/sections/HackathonGuide';
 import { WhyGitHubProjects } from './components/sections/WhyGitHubProjects';
-import { TeamManagement } from './components/sections/TeamManagement';
-import { ClineUsage } from './components/sections/ClineUsage';
+import { GitHubPresentation } from './components/sections/github-presentation';
 import { TroubleshootingGuide } from './components/sections/TroubleshootingGuide';
 import { PracticalGuide } from './components/sections/PracticalGuide';
 import { VisualGuide } from './components/sections/VisualGuide';
@@ -44,16 +42,14 @@ function App() {
         >
           <SlideShowSection />
           <WhyGitHubProjects />
+          <GitHubPresentation />
           <HackathonGuide />
-          <TeamManagement />
           <PersonalProjectManagement />
           <VisualGuide />
           <PracticalGuide />
-          <ClineUsage />
-          <TroubleshootingGuide />
           <ToolSetup />
           <ClineSetup />
-          <IssueManagement />
+          <TroubleshootingGuide />
 
           <Box
             component={motion.footer}
