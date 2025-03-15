@@ -3,9 +3,11 @@ import AIComparisonSlides from './components/ai-coding-assistants-simple.tsx';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HackathonHome from './components/hackathon-home.tsx';
 import GitHubPresentation from './components/github-presentation.tsx';
+import GitFlow from './components/git-flow.tsx';
 import GitSlides from './components/git-basics-slides.tsx';
 import ClinePresentation from './components/cline-presentation.tsx';
 import ClineGitHubFlow from './components/cline-github-basic.tsx';
+import MCPPresentation from './components/mcp.tsx';
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
               <Link to="/git-basics-slides" className="text-gray-300 hover:text-white">Git基礎</Link>
               <Link to="/cline-presentation" className="text-gray-300 hover:text-white">Cline AIアシスタント</Link>
               <Link to="/cline-github-basic" className="text-gray-300 hover:text-white">Cline + GitHub連携</Link>
+              <Link to="/git-flow" className="text-gray-300 hover:text-white">Gitフロー図解</Link>
               <Link to="/ai-coding-assistants" className="text-gray-300 hover:text-white">AI比較</Link>
+              <Link to="/mcp" className="text-gray-300 hover:text-white">MCPサーバー</Link>
             </div>
           </div>
         </nav>
@@ -32,6 +36,8 @@ function App() {
           <Route path="/cline-presentation" element={<ClinePresentation />} />
           <Route path="/ai-coding-assistants" element={<AIComparisonSlides />} />
           <Route path="/cline-github-basic" element={<ClineGitHubFlow />} />
+          <Route path="/git-flow" element={<GitFlow />} />
+          <Route path="/mcp" element={<MCPPresentation />} />
         </Routes>
       </div>
     </Router>

@@ -46,6 +46,19 @@ const HackathonHome = () => {
       ]
     },
     {
+      id: "git-flow",
+      title: "Gitフロー図解",
+      description: "効率的なGitのワークフロー解説",
+      color: "orange",
+      topics: [
+        "Gitフローの基本概念",
+        "ブランチの活用方法",
+        "コミットとマージの流れ",
+        "実践的なGit操作手順",
+        "チームでの効果的な運用方法"
+      ]
+    },
+    {
       id: "cline-github",
       title: "Cline + GitHub連携",
       description: "AIとタスク管理の統合フロー",
@@ -57,6 +70,19 @@ const HackathonHome = () => {
         "開発効率の向上とコンテキスト切り替えの削減",
         "チームコラボレーションの改善"
       ]
+    },
+    {
+      id: "mcp",
+      title: "MCPサーバーについて",
+      description: "MineCraftマルチプレイヤーサーバーの解説",
+      color: "yellow",
+      topics: [
+        "サーバーの基本構築",
+        "モッドとプラグインの導入方法",
+        "セキュリティ対策と運用管理",
+        "バックアップとメンテナンス",
+        "トラブルシューティング"
+      ]
     }
   ];
 
@@ -67,8 +93,12 @@ const HackathonHome = () => {
       navigate("/git-basics-slides");
     } else if (sectionId === "cline") {
       navigate("/cline-presentation");
+    } else if (sectionId === "git-flow") {
+      navigate("/git-flow");
     } else if (sectionId === "cline-github") {
       navigate("/cline-github-basic");
+    } else if (sectionId === "mcp") {
+      navigate("/mcp");
     }
   };
 
@@ -76,7 +106,9 @@ const HackathonHome = () => {
     if (color === "blue") return isSelected ? "bg-blue-100" : "bg-blue-50";
     if (color === "green") return isSelected ? "bg-green-100" : "bg-green-50";
     if (color === "purple") return isSelected ? "bg-purple-100" : "bg-purple-50";
+    if (color === "orange") return isSelected ? "bg-orange-100" : "bg-orange-50";
     if (color === "pink") return isSelected ? "bg-pink-100" : "bg-pink-50";
+    if (color === "yellow") return isSelected ? "bg-yellow-100" : "bg-yellow-50";
     return "bg-gray-50";
   };
 
@@ -84,6 +116,7 @@ const HackathonHome = () => {
     if (color === "blue") return "border-blue-300";
     if (color === "green") return "border-green-300";
     if (color === "purple") return "border-purple-300";
+    if (color === "orange") return "border-orange-300";
     if (color === "pink") return "border-pink-300";
     return "border-gray-300";
   };
@@ -92,7 +125,9 @@ const HackathonHome = () => {
     if (color === "blue") return "bg-blue-500 hover:bg-blue-600";
     if (color === "green") return "bg-green-500 hover:bg-green-600";
     if (color === "purple") return "bg-purple-500 hover:bg-purple-600";
+    if (color === "orange") return "bg-orange-500 hover:bg-orange-600";
     if (color === "pink") return "bg-pink-500 hover:bg-pink-600";
+    if (color === "yellow") return "bg-yellow-500 hover:bg-yellow-600";
     return "bg-gray-500";
   };
 
@@ -179,33 +214,33 @@ const HackathonHome = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-20 -mt-20"></div>
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-white opacity-10 rounded-full -ml-10 -mb-10"></div>
           
-          <h2 className="text-3xl font-bold mb-4 relative z-10">次回ハッカソン：MCPサーバーを設定しよう！</h2>
+          <h2 className="text-3xl font-bold mb-4 relative z-10">次回ハッカソン：MCPサーバーを実装しよう！</h2>
           <p className="text-lg mb-6 relative z-10">
-            Minecraftのマルチプレイヤーサーバーを構築して、みんなで遊べる環境を作り上げるハッカソンイベント開催決定！
+            AIアシスタントが外部ツールやデータを活用するためのModel Context Protocol（MCP）サーバーを構築する方法を学ぶイベント開催決定！
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 relative z-10">
             <div className="bg-white bg-opacity-20 rounded-lg p-4 backdrop-filter backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
               <h3 className="text-xl font-bold mb-2 text-yellow-300">サーバー構築</h3>
               <p className="text-sm">
-                仮想プライベートサーバー（VPS）を使って、自分だけのMinecraftサーバーを立ち上げる方法を学びます。
-                クラウドインフラストラクチャの基礎知識も身につきます。
+                TypeScriptやPythonを使ってMCPサーバーの基本構造を実装し、AIアシスタントと連携できるシステムを構築します。
+                共通ルールに基づくプロトコル設計の基礎知識も身につきます。
               </p>
             </div>
             
             <div className="bg-white bg-opacity-20 rounded-lg p-4 backdrop-filter backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
-              <h3 className="text-xl font-bold mb-2 text-green-300">モッドとプラグイン</h3>
+              <h3 className="text-xl font-bold mb-2 text-green-300">ツール拡張開発</h3>
               <p className="text-sm">
-                サーバーの機能を拡張するためのプラグインやモッドの導入方法について学びます。
-                自分だけのオリジナルサーバー環境をカスタマイズしましょう。
+                MCPサーバーの機能を拡張するための独自ツール開発方法について学びます。
+                データベース連携やAPIインテグレーションなど、様々なサービスとの接続方法を習得しましょう。
               </p>
             </div>
             
             <div className="bg-white bg-opacity-20 rounded-lg p-4 backdrop-filter backdrop-blur-sm hover:bg-opacity-30 transition duration-300">
-              <h3 className="text-xl font-bold mb-2 text-blue-300">セキュリティと運用</h3>
+              <h3 className="text-xl font-bold mb-2 text-blue-300">安全性と効率性</h3>
               <p className="text-sm">
-                サーバーを安全に運用するためのセキュリティ対策やバックアップの方法、
-                トラブルシューティングの基本について学びます。
+                MCPサーバーを安全に運用するためのセキュリティ対策や、データの効率的な処理、
+                エラーへの適切な対応方法などの実践的なノウハウについて学びます。
               </p>
             </div>
           </div>
@@ -299,7 +334,7 @@ const HackathonHome = () => {
                   <span className="text-lg mb-2 z-10">2025年</span>
                   <div className="hidden md:flex items-center justify-center mt-3 bg-white bg-opacity-20 rounded-full p-2 w-12 h-12">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
                 </div>
@@ -356,7 +391,7 @@ const HackathonHome = () => {
                   
                   <span className="text-3xl font-bold z-10">7月</span>
                   <span className="text-lg mb-2 z-10">2025年</span>
-                  <div className="hidden md:flex items-center justify-center mt-3 bg-white bg-opacity-20 rounded-full p-2 w-12 h-12">
+                  <div className="hidden md:flex items-center justifycenter mt-3 bg-white bg-opacity-20 rounded-full p-2 w-12 h-12">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
@@ -442,9 +477,14 @@ const HackathonHome = () => {
                   <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
                 </svg>
               </div>
-              <button className="bg-discord-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+              <a 
+                href="https://discord.gg/AvfNGUUZGe" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="bg-discord-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105"
+              >
                 Discordに参加する
-              </button>
+              </a>
             </div>
           </div>
         </div>

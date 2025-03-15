@@ -95,13 +95,13 @@ const GitSlides = () => {
             <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
               <p className="font-bold text-sm">作業ディレクトリ</p>
             </div>
-            <div className="absolute top-1/2 right-8 transform -translate-y-1/2 text-center">
+            <div className="absolute top-1/2 right-[-4rem] transform -translate-y-1/3 translate-y-8 text-center w-32">
               <p className="font-bold text-sm">ステージングエリア</p>
             </div>
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
               <p className="font-bold text-sm">ローカルリポジトリ</p>
             </div>
-            <div className="absolute top-1/2 left-8 transform -translate-y-1/2 text-center">
+            <div className="absolute top-1/2 left-[-4rem] transform -translate-y-1/3 translate-y-8 text-center w-32">
               <p className="font-bold text-sm">リモートリポジトリ</p>
             </div>
             
@@ -355,52 +355,68 @@ const GitSlides = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
-      {/* スライドヘッダー */}
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-center text-blue-700 border-b-2 border-blue-200 pb-2">
-          {slides[currentSlide].title}
-        </h2>
+    <div className="flex flex-col h-screen bg-gray-100">
+      {/* Header */}
+      <div className="bg-white p-4 shadow-md text-center">
+        <h1 className="text-xl font-bold text-blue-700">
+          Git基礎：バージョン管理の基本
+        </h1>
+        <p className="text-sm text-gray-600">
+          Gitの基本概念と効率的な開発ワークフロー
+        </p>
       </div>
       
-      {/* スライドコンテンツ */}
-      <div className="min-h-[400px] flex items-center justify-center p-4">
-        {slides[currentSlide].content}
-      </div>
-      
-      {/* ナビゲーション */}
-      <div className="flex justify-between items-center mt-6">
-        <div className="text-sm text-gray-500">
+      {/* Progress bar */}
+      <div className="bg-white px-4 pb-3 shadow-md">
+        <div className="w-full bg-gray-200 h-2 rounded-full">
+          <div 
+            className="bg-blue-500 h-2 rounded-full" 
+            style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+          ></div>
+        </div>
+        <div className="text-right text-sm text-gray-500 mt-1">
           {currentSlide + 1} / {slides.length}
         </div>
+      </div>
+      
+      {/* Slide content */}
+      <div className="flex-grow flex flex-col items-center justify-center p-6 bg-white mx-6 my-4 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-8 text-blue-700 border-b-2 border-blue-200 pb-2 w-full text-center">
+          {slides[currentSlide].title}
+        </h2>
         
-        <div className="flex space-x-4">
-          <button 
-            onClick={prevSlide} 
-            disabled={currentSlide === 0}
-            className={`flex items-center px-4 py-2 rounded-lg ${
-              currentSlide === 0 
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                : 'bg-blue-500 text-white hover:bg-blue-600'
-            }`}
-          >
-            <ArrowLeft size={16} className="mr-1" />
-            <span>前へ</span>
-          </button>
-          
-          <button 
-            onClick={nextSlide} 
-            disabled={currentSlide === slides.length - 1}
-            className={`flex items-center px-4 py-2 rounded-lg ${
-              currentSlide === slides.length - 1 
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                : 'bg-blue-500 text-white hover:bg-blue-600'
-            }`}
-          >
-            <span>次へ</span>
-            <ArrowRight size={16} className="ml-1" />
-          </button>
+        <div className="w-full max-w-4xl flex-grow flex items-center justify-center">
+          {slides[currentSlide].content}
         </div>
+      </div>
+      
+      {/* Navigation buttons */}
+      <div className="flex justify-between p-4">
+        <button 
+          onClick={prevSlide} 
+          disabled={currentSlide === 0}
+          className={`flex items-center space-x-1 px-4 py-2 rounded-lg ${
+            currentSlide === 0 
+              ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+              : 'bg-blue-500 text-white hover:bg-blue-600'
+          }`}
+        >
+          <ArrowLeft size={16} />
+          <span>前へ</span>
+        </button>
+        
+        <button 
+          onClick={nextSlide} 
+          disabled={currentSlide === slides.length - 1}
+          className={`flex items-center space-x-1 px-4 py-2 rounded-lg ${
+            currentSlide === slides.length - 1 
+              ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+              : 'bg-blue-500 text-white hover:bg-blue-600'
+          }`}
+        >
+          <span>次へ</span>
+          <ArrowRight size={16} />
+        </button>
       </div>
     </div>
   );
