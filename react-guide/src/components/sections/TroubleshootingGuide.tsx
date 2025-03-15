@@ -86,25 +86,6 @@ export const TroubleshootingGuide = () => {
     },
   ];
 
-  const mobileTips = [
-    {
-      title: 'モバイルでの基本操作',
-      tips: [
-        'ダブルタップでズームイン/アウト',
-        'スワイプでカンバンボードを移動',
-        'ロングタップでコンテキストメニュー表示',
-      ],
-    },
-    {
-      title: '画面サイズ対応',
-      tips: [
-        'カンバンボードは横スクロールで全体表示',
-        '詳細ビューは縦スクロールで表示',
-        'コンパクトモードで情報を集約表示',
-      ],
-    },
-  ];
-
   return (
     <Box component="section" mb={6}>
       <Typography
@@ -164,42 +145,6 @@ export const TroubleshootingGuide = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12}>
-          <Card
-            component={motion.div}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                モバイル対応のポイント
-              </Typography>
-              <Grid container spacing={3}>
-                {mobileTips.map((section) => (
-                  <Grid item xs={12} md={6} key={section.title}>
-                    <Paper elevation={3} sx={{ p: 2 }}>
-                      <Typography variant="h6" gutterBottom>
-                        {section.title}
-                      </Typography>
-                      <Box component="ul" sx={{ pl: 2 }}>
-                        {section.tips.map((tip) => (
-                          <Typography
-                            key={tip}
-                            component="li"
-                            sx={{ mb: 1 }}
-                          >
-                            {tip}
-                          </Typography>
-                        ))}
-                      </Box>
-                    </Paper>
-                  </Grid>
-                ))}
-              </Grid>
-            </CardContent>
-          </Card>
-        </Grid>
       </Grid>
     </Box>
   );

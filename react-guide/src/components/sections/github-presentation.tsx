@@ -1,446 +1,288 @@
 import React, { useState } from 'react';
-import { Box, Typography, Paper, Grid, Button, Divider, List, ListItem, ListItemIcon, ListItemText, Card, CardContent, Stepper, Step, StepLabel } from '@mui/material';
+import { ArrowLeft, ArrowRight, GitBranch, Github, Save, Upload, RefreshCw, CheckCircle, FileText } from 'lucide-react';
+
+interface Slide {
+  title: string;
+  content: React.ReactNode;
+}
 
 export const GitHubPresentation = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // スライドコンテンツの定義
-  const slides = [
+  const slides: Slide[] = [
     {
-      title: "GitHubとは？",
+      title: "Gitとは？",
       content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            ファイルの<Box component="span" fontWeight="bold" color="primary.main">変更履歴を記録・管理</Box>するためのクラウドサービス
-          </Typography>
-          
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'primary.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">GitHubの主な役割</Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText primary="✅ ファイルの変更履歴を記録" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="✅ 複数人での共同作業をサポート" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="✅ 過去の状態に簡単に戻れる" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="✅ コードを共有・公開できる" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'success.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">解決する問題</Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText primary="❌ 「最新版はどれ？」という混乱" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="❌ 誰がいつ何を変更したか不明" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="❌ ファイルの上書き事故" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="❌ バージョン管理の煩雑さ" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
+        <div className="space-y-4">
+          <div className="flex justify-center mb-6">
+            <GitBranch size={80} className="text-gray-700" />
+          </div>
+          <p className="text-lg mb-6 text-center">
+            Gitはファイルの<span className="font-bold text-blue-600">変更履歴を記録・管理</span>するためのツールです
+          </p>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="border rounded-lg p-4 bg-blue-50 text-left">
+              <h3 className="font-bold mb-2 text-center">Gitの主な役割</h3>
+              <ul className="space-y-2">
+                <li>✅ ファイルの変更履歴を記録</li>
+                <li>✅ 複数人での共同作業をサポート</li>
+                <li>✅ 同時に複数の作業を並行管理</li>
+                <li>✅ 過去の状態に簡単に戻れる</li>
+              </ul>
+            </div>
+            <div className="border rounded-lg p-4 bg-green-50 text-left">
+              <h3 className="font-bold mb-2 text-center">こんな問題を解決</h3>
+              <ul className="space-y-2">
+                <li>❌ 「最新版はどれ？」という混乱</li>
+                <li>❌ 誰がいつ何を変更したか不明</li>
+                <li>❌ 変更を元に戻せない</li>
+                <li>❌ ファイルの上書き事故</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       )
     },
     {
-      title: "リポジトリ（Repository）とは？",
+      title: "GitとGitHubの違い",
       content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            リポジトリは「プロジェクトのファイルを保管する場所」です
-          </Typography>
-          
-          <Paper elevation={2} sx={{ p: 3, bgcolor: 'primary.light', mb: 3 }}>
-            <Grid container spacing={2} justifyContent="center">
-              <Grid item xs={4}>
-                <Card elevation={1} sx={{ textAlign: 'center', p: 1 }}>
-                  <CardContent>
-                    <Typography variant="subtitle2">Webサイト用</Typography>
-                    <Typography variant="caption" color="text.secondary">リポジトリ</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={4}>
-                <Card elevation={1} sx={{ textAlign: 'center', p: 1 }}>
-                  <CardContent>
-                    <Typography variant="subtitle2">マーケティング資料</Typography>
-                    <Typography variant="caption" color="text.secondary">リポジトリ</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item xs={4}>
-                <Card elevation={1} sx={{ textAlign: 'center', p: 1 }}>
-                  <CardContent>
-                    <Typography variant="subtitle2">顧客データ</Typography>
-                    <Typography variant="caption" color="text.secondary">リポジトリ</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-            <Typography variant="body2" textAlign="center" mt={2} fontStyle="italic" color="text.secondary">
-              リポジトリはプロジェクトごとに分けて作成するのが一般的です
-            </Typography>
-          </Paper>
-          
-          <Typography variant="body2" textAlign="center" sx={{ bgcolor: 'info.light', p: 2, borderRadius: 1 }}>
-            💡 共有フォルダやクラウドストレージと似ていますが、<br />
-            変更履歴も記録される点が大きな違いです
-          </Typography>
-        </Box>
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-8 mb-4">
+            <div className="flex flex-col items-center">
+              <GitBranch size={60} className="text-gray-700 mb-4" />
+              <h3 className="font-bold mb-2 text-xl">Git</h3>
+              <div className="border rounded-lg p-4 bg-blue-50 w-full">
+                <ul className="space-y-2 text-left">
+                  <li>• ローカルで動作するツール</li>
+                  <li>• ファイルの変更を記録</li>
+                  <li>• コマンドラインから操作</li>
+                  <li>• 無料のオープンソース</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex flex-col items-center">
+              <Github size={60} className="text-gray-700 mb-4" />
+              <h3 className="font-bold mb-2 text-xl">GitHub</h3>
+              <div className="border rounded-lg p-4 bg-purple-50 w-full">
+                <ul className="space-y-2 text-left">
+                  <li>• クラウドサービス</li>
+                  <li>• Gitリポジトリのホスティング</li>
+                  <li>• チーム協業機能を提供</li>
+                  <li>• WebブラウザUIも提供</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="border-2 border-gray-300 rounded-lg p-4 bg-gray-50">
+            <p className="text-center font-medium">
+              Gitは「変更管理システム」、GitHubは「Gitリポジトリのホスティングサービス」
+            </p>
+          </div>
+        </div>
       )
     },
     {
-      title: "Issue（課題）とは？",
+      title: "基本的なGitコマンド",
       content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            Issueは「やるべきこと」や「問題点」を記録するためのメモのようなものです
-          </Typography>
-          
-          <Paper elevation={2} sx={{ p: 3, bgcolor: 'warning.light', mb: 3 }}>
-            <Box sx={{ mb: 2 }}>
-              <Paper elevation={1} sx={{ p: 1.5, mb: 1.5 }}>
-                <Box display="flex" alignItems="center">
-                  <Box sx={{ px: 1, py: 0.5, bgcolor: 'error.light', color: 'error.dark', borderRadius: 10, fontSize: '0.7rem', mr: 1 }}>
-                    バグ
-                  </Box>
-                  <Typography variant="body2" fontWeight="medium">ログインページのボタンが動作しない</Typography>
-                </Box>
-              </Paper>
-              
-              <Paper elevation={1} sx={{ p: 1.5, mb: 1.5 }}>
-                <Box display="flex" alignItems="center">
-                  <Box sx={{ px: 1, py: 0.5, bgcolor: 'success.light', color: 'success.dark', borderRadius: 10, fontSize: '0.7rem', mr: 1 }}>
-                    新機能
-                  </Box>
-                  <Typography variant="body2" fontWeight="medium">お問い合わせフォームを追加する</Typography>
-                </Box>
-              </Paper>
-              
-              <Paper elevation={1} sx={{ p: 1.5 }}>
-                <Box display="flex" alignItems="center">
-                  <Box sx={{ px: 1, py: 0.5, bgcolor: 'primary.light', color: 'primary.dark', borderRadius: 10, fontSize: '0.7rem', mr: 1 }}>
-                    改善
-                  </Box>
-                  <Typography variant="body2" fontWeight="medium">商品ページのデザインを更新する</Typography>
-                </Box>
-              </Paper>
-            </Box>
-          </Paper>
-          
-          <Typography variant="body2" fontWeight="medium" textAlign="center">
-            💡 Issueには担当者やラベル、期限などを設定できます
-          </Typography>
-          <Typography variant="caption" textAlign="center" display="block" color="text.secondary" mt={0.5}>
-            チームメンバーはIssueにコメントを追加して議論することもできます
-          </Typography>
-        </Box>
+        <div className="space-y-6">
+          <div className="flex justify-center mb-6">
+            <Save size={60} className="text-gray-700" />
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="border rounded-lg p-4 bg-blue-50">
+              <h3 className="font-bold mb-3 text-center">基本コマンド</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center space-x-2">
+                  <code className="bg-white px-2 py-1 rounded text-sm">git init</code>
+                  <span>新しいリポジトリを作成</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <code className="bg-white px-2 py-1 rounded text-sm">git clone</code>
+                  <span>リポジトリをコピー</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <code className="bg-white px-2 py-1 rounded text-sm">git status</code>
+                  <span>変更状態を確認</span>
+                </li>
+              </ul>
+            </div>
+            <div className="border rounded-lg p-4 bg-green-50">
+              <h3 className="font-bold mb-3 text-center">変更の記録</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center space-x-2">
+                  <code className="bg-white px-2 py-1 rounded text-sm">git add</code>
+                  <span>変更をステージング</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <code className="bg-white px-2 py-1 rounded text-sm">git commit</code>
+                  <span>変更を記録</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <code className="bg-white px-2 py-1 rounded text-sm">git push</code>
+                  <span>変更を送信</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex justify-center items-center space-x-4 mt-6">
+            <div className="flex items-center space-x-2 text-gray-600">
+              <RefreshCw size={20} />
+              <span>変更を記録</span>
+            </div>
+            <div className="w-8 h-px bg-gray-300"></div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Upload size={20} />
+              <span>GitHubへ送信</span>
+            </div>
+            <div className="w-8 h-px bg-gray-300"></div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <CheckCircle size={20} />
+              <span>完了</span>
+            </div>
+          </div>
+        </div>
       )
     },
     {
-      title: "Projects（プロジェクト管理）とは？",
+      title: "Issues（課題管理）とは",
       content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            Projectsは「Issueをカンバンボードで視覚的に管理できるツール」です
-          </Typography>
-          
-          <Paper elevation={2} sx={{ p: 3, bgcolor: 'info.light', mb: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={4}>
-                <Paper elevation={1} sx={{ p: 1.5, height: '100%' }}>
-                  <Typography variant="subtitle2" textAlign="center" fontWeight="bold" mb={1} sx={{ borderBottom: '1px solid #eee', pb: 0.5 }}>
-                    ToDo（予定）
-                  </Typography>
-                  <Box sx={{ '& > div': { mb: 1 } }}>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'warning.50' }}>
-                      <Typography variant="caption">Q2マーケティング計画の作成</Typography>
-                    </Paper>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'success.50' }}>
-                      <Typography variant="caption">新商品の写真撮影</Typography>
-                    </Paper>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'primary.50' }}>
-                      <Typography variant="caption">採用ページの更新</Typography>
-                    </Paper>
-                  </Box>
-                </Paper>
-              </Grid>
-              
-              <Grid item xs={4}>
-                <Paper elevation={1} sx={{ p: 1.5, height: '100%' }}>
-                  <Typography variant="subtitle2" textAlign="center" fontWeight="bold" mb={1} sx={{ borderBottom: '1px solid #eee', pb: 0.5 }}>
-                    進行中
-                  </Typography>
-                  <Box sx={{ '& > div': { mb: 1 } }}>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'secondary.50' }}>
-                      <Typography variant="caption">新規顧客向けメールの作成</Typography>
-                    </Paper>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'error.50' }}>
-                      <Typography variant="caption">来月のイベント準備</Typography>
-                    </Paper>
-                  </Box>
-                </Paper>
-              </Grid>
-              
-              <Grid item xs={4}>
-                <Paper elevation={1} sx={{ p: 1.5, height: '100%' }}>
-                  <Typography variant="subtitle2" textAlign="center" fontWeight="bold" mb={1} sx={{ borderBottom: '1px solid #eee', pb: 0.5 }}>
-                    完了
-                  </Typography>
-                  <Box sx={{ '& > div': { mb: 1 } }}>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'grey.100' }}>
-                      <Typography variant="caption">Q1レポートの提出</Typography>
-                    </Paper>
-                    <Paper variant="outlined" sx={{ p: 1, bgcolor: 'grey.100' }}>
-                      <Typography variant="caption">チームミーティング</Typography>
-                    </Paper>
-                  </Box>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Paper>
-          
-          <Typography variant="body2" fontWeight="medium" textAlign="center">
-            💡 カンバンボードはTrelloやNotionと似た使い勝手です
-          </Typography>
-          <Typography variant="caption" textAlign="center" display="block" color="text.secondary" mt={0.5}>
-            タスクを列間でドラッグ＆ドロップして進捗管理できます
-          </Typography>
-        </Box>
+        <div className="space-y-6">
+          <div className="flex justify-center mb-6">
+            <FileText size={60} className="text-gray-700" />
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <div className="space-y-4">
+              <div className="border rounded-lg p-4 bg-white shadow-sm">
+                <div className="flex items-center">
+                  <span className="px-2 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">バグ</span>
+                  <h4 className="ml-2 font-medium">ログインボタンが動作しない</h4>
+                </div>
+              </div>
+              <div className="border rounded-lg p-4 bg-white shadow-sm">
+                <div className="flex items-center">
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">機能改善</span>
+                  <h4 className="ml-2 font-medium">検索機能の追加</h4>
+                </div>
+              </div>
+              <div className="border rounded-lg p-4 bg-white shadow-sm">
+                <div className="flex items-center">
+                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">提案</span>
+                  <h4 className="ml-2 font-medium">UIデザインの刷新</h4>
+                </div>
+              </div>
+            </div>
+            <div className="mt-6 bg-gray-50 border rounded-lg p-4">
+              <p className="text-center text-sm text-gray-600">
+                Issueでは、担当者の割り当て、ラベル付け、期限設定などができます
+              </p>
+            </div>
+          </div>
+        </div>
       )
     },
     {
-      title: "Gitの基本コマンド",
+      title: "Project（プロジェクト）機能",
       content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            主なGitコマンドと基本的な使い方
-          </Typography>
-          
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'primary.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">リポジトリ操作</Typography>
-                <List dense>
-                  <ListItem>
-                    <Box component="span" sx={{ bgcolor: 'background.paper', px: 1, py: 0.5, borderRadius: 1, mr: 1, fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                      git init
-                    </Box>
-                    <ListItemText primary="新しいリポジトリを作成" />
-                  </ListItem>
-                  <ListItem>
-                    <Box component="span" sx={{ bgcolor: 'background.paper', px: 1, py: 0.5, borderRadius: 1, mr: 1, fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                      git clone
-                    </Box>
-                    <ListItemText primary="リポジトリをコピー" />
-                  </ListItem>
-                  <ListItem>
-                    <Box component="span" sx={{ bgcolor: 'background.paper', px: 1, py: 0.5, borderRadius: 1, mr: 1, fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                      git status
-                    </Box>
-                    <ListItemText primary="作業状態を確認" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'success.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">変更操作</Typography>
-                <List dense>
-                  <ListItem>
-                    <Box component="span" sx={{ bgcolor: 'background.paper', px: 1, py: 0.5, borderRadius: 1, mr: 1, fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                      git add .
-                    </Box>
-                    <ListItemText primary="変更をステージングに追加" />
-                  </ListItem>
-                  <ListItem>
-                    <Box component="span" sx={{ bgcolor: 'background.paper', px: 1, py: 0.5, borderRadius: 1, mr: 1, fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                      git commit
-                    </Box>
-                    <ListItemText primary="変更を記録" />
-                  </ListItem>
-                  <ListItem>
-                    <Box component="span" sx={{ bgcolor: 'background.paper', px: 1, py: 0.5, borderRadius: 1, mr: 1, fontFamily: 'monospace', fontSize: '0.8rem' }}>
-                      git push
-                    </Box>
-                    <ListItemText primary="変更をGitHubに送信" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-          </Grid>
-          
-          <Box mt={3}>
-            <Stepper alternativeLabel>
-              <Step active>
-                <StepLabel>変更</StepLabel>
-              </Step>
-              <Step active>
-                <StepLabel>git add</StepLabel>
-              </Step>
-              <Step active>
-                <StepLabel>git commit</StepLabel>
-              </Step>
-              <Step active>
-                <StepLabel>git push</StepLabel>
-              </Step>
-            </Stepper>
-          </Box>
-        </Box>
+        <div className="space-y-6">
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="border rounded-lg p-4 bg-gray-50">
+              <h3 className="font-bold mb-3 text-center text-gray-700">ToDo</h3>
+              <div className="space-y-2">
+                <div className="bg-white p-3 rounded border shadow-sm">
+                  <span className="block text-sm">検索機能の実装</span>
+                  <span className="text-xs text-gray-500">優先度: 高</span>
+                </div>
+                <div className="bg-white p-3 rounded border shadow-sm">
+                  <span className="block text-sm">デザインの改善</span>
+                  <span className="text-xs text-gray-500">優先度: 中</span>
+                </div>
+              </div>
+            </div>
+            <div className="border rounded-lg p-4 bg-blue-50">
+              <h3 className="font-bold mb-3 text-center text-gray-700">進行中</h3>
+              <div className="space-y-2">
+                <div className="bg-white p-3 rounded border shadow-sm">
+                  <span className="block text-sm">ログイン機能の修正</span>
+                  <span className="text-xs text-gray-500">担当: 田中</span>
+                </div>
+              </div>
+            </div>
+            <div className="border rounded-lg p-4 bg-green-50">
+              <h3 className="font-bold mb-3 text-center text-gray-700">完了</h3>
+              <div className="space-y-2">
+                <div className="bg-white p-3 rounded border shadow-sm">
+                  <span className="block text-sm">新規登録画面の作成</span>
+                  <span className="text-xs text-gray-500">完了日: 3/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4">
+            <h4 className="font-medium text-center mb-2">プロジェクト機能の特徴</h4>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center">
+                <CheckCircle size={16} className="text-green-500 mr-2" />
+                カンバン形式でタスクを視覚的に管理
+              </li>
+              <li className="flex items-center">
+                <CheckCircle size={16} className="text-green-500 mr-2" />
+                Issueと連携してステータスを自動更新
+              </li>
+              <li className="flex items-center">
+                <CheckCircle size={16} className="text-green-500 mr-2" />
+                進捗状況を簡単に把握可能
+              </li>
+            </ul>
+          </div>
+        </div>
       )
     },
     {
-      title: "GitHub活用のメリット",
+      title: "チーム開発のベストプラクティス",
       content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            GitHubを使うことでこんなメリットがあります
-          </Typography>
-          
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'primary.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">チーム開発</Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText primary="分散開発のサポート" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="コードレビューの簡素化" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="コミュニケーションの円滑化" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="作業の可視化" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'success.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">プロジェクト管理</Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText primary="タスク管理の一元化" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="進捗の可視化" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="プロジェクト全体の把握" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="自動化による効率化" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'warning.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">品質向上</Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText primary="バグの早期発見" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="コード品質の向上" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="CIによる自動テスト" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="ドキュメントの管理" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={6}>
-              <Paper elevation={1} sx={{ p: 2, bgcolor: 'secondary.light', height: '100%' }}>
-                <Typography variant="subtitle1" fontWeight="bold" mb={1} textAlign="center">エコシステム</Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText primary="豊富な連携ツール" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="GitHubアクション" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="コミュニティサポート" />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText primary="継続的な機能改善" />
-                  </ListItem>
-                </List>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
-      )
-    },
-    {
-      title: "まとめ：GitHubを始めよう",
-      content: (
-        <Box>
-          <Typography variant="h6" textAlign="center" mb={3}>
-            GitHubで効率的な開発・協業を始めましょう
-          </Typography>
-          
-          <Paper elevation={3} sx={{ p: 3, bgcolor: 'primary.light', mb: 3 }}>
-            <List>
-              <ListItem>
-                <ListItemText 
-                  primary="アカウント作成から始める" 
-                  secondary="github.comでアカウントを作成しましょう" 
-                />
-              </ListItem>
-              <Divider variant="middle" />
-              <ListItem>
-                <ListItemText 
-                  primary="リポジトリを作成する" 
-                  secondary="プロジェクトの保管場所を用意します" 
-                />
-              </ListItem>
-              <Divider variant="middle" />
-              <ListItem>
-                <ListItemText 
-                  primary="ファイルをコミットする" 
-                  secondary="変更を記録していきましょう" 
-                />
-              </ListItem>
-              <Divider variant="middle" />
-              <ListItem>
-                <ListItemText 
-                  primary="Issueやプロジェクトボードを活用する" 
-                  secondary="タスク管理で効率アップ" 
-                />
-              </ListItem>
-            </List>
-          </Paper>
-          
-          <Typography variant="body1" fontStyle="italic" textAlign="center">
-            「GitHubはただのコード保管場所ではなく、ソフトウェア開発の全工程を支える総合プラットフォームです」
-          </Typography>
-        </Box>
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="border rounded-lg p-4 bg-blue-50">
+              <h3 className="font-bold mb-3 text-center">コミュニケーション</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <CheckCircle size={16} className="text-green-500 mt-1 mr-2" />
+                  <span>Issueでタスクの詳細を明確に記述</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle size={16} className="text-green-500 mt-1 mr-2" />
+                  <span>プルリクエストで変更内容を丁寧に説明</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle size={16} className="text-green-500 mt-1 mr-2" />
+                  <span>定期的な進捗報告とレビュー依頼</span>
+                </li>
+              </ul>
+            </div>
+            <div className="border rounded-lg p-4 bg-purple-50">
+              <h3 className="font-bold mb-3 text-center">品質管理</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <CheckCircle size={16} className="text-green-500 mt-1 mr-2" />
+                  <span>コードレビューの実施</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle size={16} className="text-green-500 mt-1 mr-2" />
+                  <span>自動テストの導入</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle size={16} className="text-green-500 mt-1 mr-2" />
+                  <span>ドキュメントの整備</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <p className="font-medium text-gray-700">
+              「個人のスキルも大切ですが、チームとしての開発プロセスがより重要です」
+            </p>
+          </div>
+        </div>
       )
     }
   ];
@@ -454,66 +296,69 @@ export const GitHubPresentation = () => {
   };
 
   return (
-    <Box component="section">
-      <Paper elevation={3} sx={{ p: 4, maxWidth: '800px', mx: 'auto' }}>
+    <section className="max-w-4xl mx-auto p-6">
+      <div className="bg-white rounded-lg shadow-lg p-8">
         {/* スライドヘッダー */}
-        <Box mb={3}>
-          <Typography variant="h4" textAlign="center" color="primary.main" mb={1}>
-            GitHub入門
-          </Typography>
-          <Typography variant="subtitle1" textAlign="center" color="text.secondary">
-            リポジトリ、Issue、Projectsの基本と効果的なタスク管理
-          </Typography>
-          <Box sx={{ position: 'relative', mt: 3 }}>
-            <Box sx={{ height: '4px', width: '100%', bgcolor: 'grey.200' }} />
-            <Box 
-              sx={{ 
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                height: '4px',
-                width: `${((currentSlide + 1) / slides.length) * 100}%`,
-                bgcolor: 'primary.main'
-              }}
-            />
-            <Typography variant="caption" display="block" textAlign="right" mt={0.5}>
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">
+            Git/GitHub入門
+          </h2>
+          <p className="text-center text-gray-600">
+            効率的な開発のための基礎知識
+          </p>
+          {/* プログレスバー */}
+          <div className="relative mt-4">
+            <div className="h-2 bg-gray-200 rounded-full">
+              <div
+                className="h-2 bg-blue-500 rounded-full transition-all duration-300"
+                style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+              />
+            </div>
+            <p className="text-right text-sm text-gray-500 mt-1">
               {currentSlide + 1} / {slides.length}
-            </Typography>
-          </Box>
-        </Box>
-        
+            </p>
+          </div>
+        </div>
+
         {/* スライドコンテンツ */}
-        <Box>
-          <Typography variant="h5" textAlign="center" color="text.primary" mb={3} pb={1} sx={{ borderBottom: '2px solid', borderColor: 'primary.light' }}>
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold text-center text-gray-800 mb-6 pb-2 border-b-2 border-blue-100">
             {slides[currentSlide].title}
-          </Typography>
-          
-          <Box sx={{ minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          </h3>
+          <div className="min-h-[400px] flex items-center justify-center">
             {slides[currentSlide].content}
-          </Box>
-        </Box>
-        
+          </div>
+        </div>
+
         {/* スライドナビゲーション */}
-        <Box mt={3} display="flex" justifyContent="space-between">
-          <Button 
-            variant="contained" 
-            color="primary"
+        <div className="flex justify-between items-center">
+          <button
             onClick={handlePrev}
             disabled={currentSlide === 0}
+            className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
+              currentSlide === 0
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-blue-500 text-white hover:bg-blue-600'
+            }`}
           >
+            <ArrowLeft className="w-5 h-5 mr-2" />
             前へ
-          </Button>
+          </button>
           
-          <Button 
-            variant="contained" 
-            color="primary"
+          <button
             onClick={handleNext}
             disabled={currentSlide === slides.length - 1}
+            className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
+              currentSlide === slides.length - 1
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-blue-500 text-white hover:bg-blue-600'
+            }`}
           >
             次へ
-          </Button>
-        </Box>
-      </Paper>
-    </Box>
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </button>
+        </div>
+      </div>
+    </section>
   );
 };
