@@ -1,14 +1,12 @@
 [build]
   publish = "dist"
-  command = "rm -rf node_modules package-lock.json && npm install && npm run build"
+  command = "npm install --no-optional && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
+  ROLLUP_SKIP_PLATFORM_CHECK = "true"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build.processing]
-  skip_processing = false
