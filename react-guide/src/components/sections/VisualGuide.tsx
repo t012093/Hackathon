@@ -75,7 +75,7 @@ export const VisualGuide = () => {
          • カラムごとの条件設定
       </div>
       `,
-      image: '/src/assets/images/guide/board-setup.png',
+      image: '/src/assets/images/guide/projects.png',
     },
     {
       title: 'カスタムフィールドの追加',
@@ -93,7 +93,7 @@ export const VisualGuide = () => {
          • デフォルト値の設定
       </div>
       `,
-      image: '/src/assets/images/guide/board-setup.png',
+      image: '/src/assets/images/guide/karam.png',
     },
     {
       title: 'ラベルの色分けとグループ化',
@@ -111,7 +111,7 @@ export const VisualGuide = () => {
          - ステータス別のグループ化
       </div>
       `,
-      image: '/src/assets/images/guide/board-setup.png',
+      image: '/src/assets/images/guide/p1.png',
     },
     {
       title: 'オートメーションの設定',
@@ -130,7 +130,7 @@ export const VisualGuide = () => {
          - 期限前のリマインダー
       </div>
       `,
-      image: '/src/assets/images/guide/board-setup.png',
+      image: '/src/assets/images/guide/auto.png',
     },
     {
       title: 'Issueの作成と効率的な管理',
