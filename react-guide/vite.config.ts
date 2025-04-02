@@ -6,15 +6,19 @@ export default defineConfig({
   plugins: [react()],
   build: {
     chunkSizeWarningLimit: 1000,
+    minify: 'esbuild',
     target: 'es2020',
+    sourcemap: false,
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
-      onwarn(warning, warn) {
-        if (warning.code === 'MISSING_EXPORT') return
-        warn(warning)
-      },
-    },
+      treeshake: true,
+      output: {
+        manualChunks: undefined
+      }
+    }
   },
-  define: {
-    'process.env.ESBUILD_SKIP_BINARY_VERSION_CHECK': '"1"'
+  optimizeDeps: {
+    force: true
   }
 })
