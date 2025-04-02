@@ -1,15 +1,26 @@
 [build]
+  command = "npm run netlify-build"
   publish = "dist"
-  command = "npm ci --ignore-scripts && npm run build"
 
 [build.environment]
   NODE_VERSION = "18.20.8"
-  NPM_VERSION = "9.8.1"
-  NPM_FLAGS = "--no-optional --no-audit"
-  CI = "true"
-  ROLLUP_SKIP_PLATFORM_CHECK = "true"
+  CI = "false"
+  ESBUILD_SKIP_BINARY_VERSION_CHECK = "1"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[context.production]
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+[context.branch-deploy]
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+[context.deploy-preview]
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
