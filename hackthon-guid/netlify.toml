@@ -1,0 +1,27 @@
+[build]
+  publish = "build"
+  command = "npm run build"
+
+[build.environment]
+  CI = "false"
+
+# プロダクションのコンテキストでのリダイレクト設定
+[context.production]
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+# 開発ブランチのコンテキストでのリダイレクト設定
+[context.branch-deploy]
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
+
+# プレビューデプロイのコンテキスト設定
+[context.deploy-preview]
+  [[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
