@@ -8,7 +8,11 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     target: 'es2020',
     rollupOptions: {
-      external: ['@rollup/rollup-linux-x64-gnu', '@rollup/rollup-linux-x64-musl'],
+      shimMissingExports: true,
+      onwarn(warning, warn) {
+        if (warning.code === 'MISSING_EXPORT') return
+        warn(warning)
+      },
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
